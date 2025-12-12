@@ -1,0 +1,8 @@
+<h1>Create Projects</h1>
+
+<form action="/admin/projects" method="POST">
+    @csrf
+    <input type="text" name="title" placeholder="Título">
+    <textarea name="description" placeholder="Descripción"></textarea>
+    <button type="submit">Save</button>
+</form>
