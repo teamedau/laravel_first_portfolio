@@ -35,7 +35,7 @@ class ProjectController extends Controller
 
         Project::create($data);
 
-        return redirect()->route('projects.index')->with('success','Proyecto creado.');
+        return redirect()->route('projects.index')->with('success','Project created.');
     }
 
     public function show(Project $project)
@@ -65,12 +65,12 @@ class ProjectController extends Controller
 
         $project->update($data);
 
-        return redirect()->route('projects.show', $project)->with('success','Proyecto actualizado.');
+        return redirect()->route('projects.show', $project)->with('success','Project Updated.');
     }
 
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('projects.index')->with('success','Proyecto eliminado.');
+        return redirect()->route('projects.index')->with('success','Project Deleted.');
     }
 }

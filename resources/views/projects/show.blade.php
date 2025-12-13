@@ -9,6 +9,6 @@
 
 <p>{{ $project->description }}</p>
 @if($project->link)
-<p><a href="{{ $project->link }}" target="_blank">Ver proyecto</a></p>
+<p><a href="{{ $project->link }}" target="_blank">See Project</a></p>
 @endif
 @endsection

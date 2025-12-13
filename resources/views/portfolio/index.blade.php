@@ -1,4 +1,4 @@
-<h1>Mi Portafolio</h1>
+<h1>My Portfolio</h1>
 
 @foreach($projects as $project)
     <h2>{{ $project->title }}</h2>

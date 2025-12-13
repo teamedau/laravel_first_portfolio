@@ -12,8 +12,8 @@
 
     {{-- Navbar sencilla --}}
     <nav>
-        <a href="{{ route('projects.index') }}">Inicio</a> |
-        <a href="{{ route('projects.create') }}">Crear Proyecto</a>
+        <a href="{{ route('projects.index') }}">Home</a> |
+        <a href="{{ route('projects.create') }}">New Project</a>
     </nav>
 
     <hr>
