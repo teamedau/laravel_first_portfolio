@@ -1,14 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>My Portfolio</h1>
+<h1 class="text-2xl font-bold mb-6">My Portfolio</h1>
 
-@foreach($projects as $project)
-<div>
-    <h3><a href="{{ route('projects.show', $project) }}">{{ $project->title }}</a></h3>
-    <p>{{ Str::limit($project->description, 120) }}</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    @foreach($projects as $project)
+        <x-project-card
+            :title="$project->title"
+            :description="Str::limit($project->description, 120)"
+            :link="route('projects.show', $project)"
+        />
+    @endforeach
 </div>
-@endforeach
 
 {{ $projects->links() }}
 @endsection

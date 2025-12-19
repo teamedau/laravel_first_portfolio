@@ -1,11 +1,218 @@
-@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cause&display=swap');
+
+:root {
+    --font-title: 'Bebas Neue', sans-serif;
+    --font-body: 'Cause', serif;
+    --bg-main: #232946;
+    --bg-card: #fffffe;
+    --text-main: #b8c1ec;
+    --accent-color: #eebbc3;
+    --dark: #121629;
+}
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #232946;
+    color: #fffffe;
+    font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-title);
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+h4,
+h5,
+.subtitle {
+    font-family: var(--font-title);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+p {
+    font-family: var(--font-body);
+    color: #b8c1ec;
+    line-height: 1.6;
+}
+
+button {
+    background-color: #eebbc3;
+    color: #232946;
+    font-family: var(--font-title);
+    cursor: pointer;
+    border: none;
+}
+
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: var(--bg-main);
+    border-bottom: 1px solid var(--dark);
+}
+
+.header h1 {
+    font-family: var(--font-title);
+    font-size: 24px;
+    letter-spacing: normal;
+}
+
+.nav a {
+    margin-left: 24px;
+    text-decoration: none;
+    font-family: var(--font-title);
+    color: var(--text-main);
+    letter-spacing: normal;
+}
+
+.nav a:hover {
+    color: var(--accent);
+}
+
+.login {
+    font-weight: semi-bold;
+    color: var(--accent);
+}
+
+/* HERO */
+.hero {
+    height: 360px;
+    background: #B8C1EC;
+    background: linear-gradient(90deg, rgba(184, 193, 236, 1) 0%, rgba(238, 187, 195, 1) 50%);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* TRENDING */
+.trending {
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.trending button {
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-title);
+}
+
+.trending button:hover {
+    background: var(--accent);
+    color: var(--bg-main);
+}
+
+/* PROJECTS */
+.projects {
+    padding: 60px 40px;
+}
+
+.project-list {
+    display: flex;
+    gap: 24px;
+    overflow: auto;
+}
+
+.project-card {
+    width: 260px;
+    background: var(--bg-card);
+    color: var(--dark);
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #ddd;
+}
+
+.project-card.empty {
+    background: #fffffe;
+}
+
+.project-image {
+    height: 140px;
+    background: #d4d8f0;
+    margin-bottom: 12px;
+}
+
+.project-card h3 {
+    font-family: var(--font-title);
+    color: var(--dark);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.project-card p {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #4a4a68;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #d4d8f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 70%;
+    /* Example progress */
+    background: var(--accent);
+}
+
+/* FOOTER */
+.footer {
+    background: var(--dark);
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.footer h4 {
+    font-family: var(--font-title);
+    margin-bottom: 12px;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer li {
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.social-icons span {
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
 }

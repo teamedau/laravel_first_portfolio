@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {{-- Si usas Tailwind o CSS propio, lo linkeas aquí --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <title>{{ config('app.name', 'Vica Projects') }}</title>
+
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet">
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body style="max-width: 800px; margin: 40px auto; font-family: Arial;">
+<body>
 
-    {{-- Navbar sencilla --}}
-    <nav>
-        <a href="{{ route('projects.index') }}">Home</a> |
-        <a href="{{ route('projects.create') }}">New Project</a>
-    </nav>
+    <x-header />
 
-    <hr>
-
-    {{-- Aquí se insertará el contenido de cada vista --}}
     @yield('content')
 
+    <x-footer />
+
 </body>
+
+
 </html>
