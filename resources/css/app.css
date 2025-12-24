@@ -1,30 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cause&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cause:wght@400;500;600;700&display=swap');
 
+/* Tailwind (si lo usas) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+VARIABLES
+========================= */
 :root {
+    /* Fonts */
     --font-title: 'Bebas Neue', sans-serif;
     --font-body: 'Cause', serif;
-    --bg-main: #232946;
+
+    /* Backgrounds */
+    --bg-dark: #232946;
+    --bg-light: #d4d8f0;
     --bg-card: #fffffe;
-    --text-main: #b8c1ec;
-    --accent-color: #eebbc3;
-    --dark: #121629;
+
+    /* Text */
+    --text-light: #fffffe;
+    --text-muted: #b8c1ec;
+    --text-dark: #121629;
+
+    /* Accents */
+    --accent: #eebbc3;
+    --stroke-dark: #121629;
 }
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
-
-
-* {
+/* =========================
+RESET GLOBAL
+========================= */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* =========================
+BASE
+========================= */
 body {
-    background: #232946;
-    color: #fffffe;
+    background: var(--bg-dark);
+    color: var(--text-light);
     font-family: var(--font-body);
 }
 
@@ -45,66 +65,99 @@ h5,
 }
 
 p {
-    font-family: var(--font-body);
-    color: #b8c1ec;
+    color: var(--text-muted);
     line-height: 1.6;
 }
 
 button {
-    background-color: #eebbc3;
-    color: #232946;
+    background: var(--accent);
+    color: var(--bg-dark);
     font-family: var(--font-title);
-    cursor: pointer;
     border: none;
+    cursor: pointer;
 }
 
+button:hover {
+    opacity: 0.9;
+}
 
-/* HEADER */
-.header {
+/* =========================
+LAYOUT
+========================= */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+section {
+    padding: 80px 0;
+}
+
+/* =========================
+SECTIONS
+========================= */
+.section-dark {
+    background: var(--bg-dark);
+}
+
+.section-light {
+    background: var(--bg-light);
+}
+
+/* =========================
+HEADER
+========================= */
+.main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background: var(--bg-main);
-    border-bottom: 1px solid var(--dark);
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--stroke-dark);
 }
 
-.header h1 {
+.logo {
     font-family: var(--font-title);
-    font-size: 24px;
-    letter-spacing: normal;
+    font-size: 14px;
+    color: var(--text-dark);
 }
 
-.nav a {
-    margin-left: 24px;
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+}
+
+.nav-list a {
     text-decoration: none;
     font-family: var(--font-title);
-    color: var(--text-main);
-    letter-spacing: normal;
+    color: var(--text-dark);
 }
 
-.nav a:hover {
+.nav-list a:hover {
     color: var(--accent);
 }
 
-.login {
-    font-weight: semi-bold;
-    color: var(--accent);
-}
-
-/* HERO */
+/* =========================
+HERO
+========================= */
 .hero {
     height: 360px;
-    background: #B8C1EC;
-    background: linear-gradient(90deg, rgba(184, 193, 236, 1) 0%, rgba(238, 187, 195, 1) 50%);
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(90deg,
+            var(--text-muted) 0%,
+            var(--accent) 55%);
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    margin: 40px 0;
 }
 
-/* TRENDING */
+/* =========================
+TRENDING
+========================= */
 .trending {
     margin: 40px auto;
     display: flex;
@@ -117,47 +170,52 @@ button {
     background: transparent;
     border: 1px solid var(--accent);
     color: var(--accent);
-    font-family: var(--font-title);
 }
 
 .trending button:hover {
     background: var(--accent);
-    color: var(--bg-main);
+    color: var(--bg-dark);
 }
 
-/* PROJECTS */
+/* =========================
+PROJECTS
+========================= */
 .projects {
+    list-style: none;
+    display: flex;
+    gap: 16px;
     padding: 60px 40px;
+    overflow-x: auto;
+    margin: 10px;
 }
 
-.project-list {
-    display: flex;
-    gap: 24px;
-    overflow: auto;
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .project-card {
     width: 260px;
     background: var(--bg-card);
-    color: var(--dark);
-    border-radius: 8px;
+    color: var(--text-dark);
+    border-radius: 12px;
     padding: 16px;
-    border: 1px solid #ddd;
-}
-
-.project-card.empty {
-    background: #fffffe;
+    border: 1px solid rgba(18, 22, 41, 0.1);
 }
 
 .project-image {
     height: 140px;
-    background: #d4d8f0;
+    background: var(--bg-light);
     margin-bottom: 12px;
+    border-radius: 8px;
 }
 
 .project-card h3 {
     font-family: var(--font-title);
-    color: var(--dark);
     font-size: 20px;
     margin-bottom: 8px;
 }
@@ -170,10 +228,9 @@ button {
 
 .progress-bar {
     height: 6px;
-    background: #d4d8f0;
+    background: var(--bg-light);
     border-radius: 3px;
     overflow: hidden;
-    margin-bottom: 10px;
 }
 
 .progress-bar::after {
@@ -181,38 +238,90 @@ button {
     display: block;
     height: 100%;
     width: 70%;
-    /* Example progress */
     background: var(--accent);
 }
 
-/* FOOTER */
+/* =========================
+FOOTER
+========================= */
 .footer {
-    background: var(--dark);
-    padding: 60px 40px;
+    background: var(--stroke-dark);
+    color: var(--text-light);
+    padding: 60px 40px 24px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
 }
 
 .footer h4 {
     font-family: var(--font-title);
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
-.footer ul {
+/* =========================
+SUBSCRIBE
+========================= */
+.subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.subscribe-form input {
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: none;
+    font-family: var(--font-body);
+}
+
+.subscribe-form button {
+    padding: 10px;
+    background: var(--accent);
+    color: var(--bg-dark);
+    font-family: var(--font-title);
+}
+
+/* =========================
+FOOTER MENU
+========================= */
+.footer-menu ul,
+.footer-social ul {
     list-style: none;
 }
 
-.footer li {
-    margin-bottom: 8px;
-    color: var(--text-secondary);
+.footer-menu li,
+.footer-social li {
+    margin-bottom: 10px;
 }
 
-.social-icons span {
-    width: 20px;
-    height: 20px;
-    background: var(--accent);
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
+.footer-menu a,
+.footer-social a {
+    text-decoration: none;
+    color: var(--text-muted);
+}
+
+.footer-menu a:hover,
+.footer-social a:hover {
+    color: var(--accent);
+}
+
+/* =========================
+SOCIAL
+========================= */
+.footer-social ul {
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+FOOTER BOTTOM
+========================= */
+.footer-bottom {
+    grid-column: 1 / -1;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 16px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
 }
