@@ -45,6 +45,20 @@
             link="#"
         />
     </li>
+    <li class="flex-shrink-0">
+        <x-project-card
+            title="Cool Experiment"
+            description="Idea 3. Testing new waters."
+            link="#"
+        />
+        <li class="flex-shrink-0">
+        <x-project-card
+            title="Trad Project"
+            description="Idea 4. Crazy but may work."
+            link="#"
+        />
+    </li>
+    
 </ul>
 
 

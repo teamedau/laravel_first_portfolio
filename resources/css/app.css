@@ -182,6 +182,7 @@ PROJECTS
 ========================= */
 .projects {
     list-style: none;
+    justify-content: space-between;
     display: flex;
     gap: 16px;
     padding: 60px 40px;
@@ -205,6 +206,7 @@ PROJECTS
     border-radius: 12px;
     padding: 16px;
     border: 1px solid rgba(18, 22, 41, 0.1);
+    margin-right: 10px;
 }
 
 .project-image {

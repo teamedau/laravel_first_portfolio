@@ -15,4 +15,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/ping', function () {
+    return 'Laravel is alive';
+});
 
