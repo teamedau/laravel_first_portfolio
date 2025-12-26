@@ -14,10 +14,19 @@ class ProjectController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $project = Project::create($request->all());
-        return response()->json($project, 201);
-    }
+{
+    $data = $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'tech' => 'nullable|string',
+        'status' => 'nullable|string',
+        'progress' => 'nullable|integer|min:0|max:100',
+    ]);
+
+    $project = Project::create($data);
+
+    return response()->json($project, 201);
+}
 
     public function show(Project $project)
     {
