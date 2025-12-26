@@ -31,35 +31,21 @@
 
         <!-- Grid -->
         <ul class="flex gap-6 overflow-x-auto pb-6 px-2 md:px-0">
-    <li class="flex-shrink-0">
-        <x-project-card
-            title="Project Title"
-            description="Idea 1. Clear, short, and human."
-            link="#"
-        />
-    </li>
-    <li class="flex-shrink-0">
-        <x-project-card
-            title="Another Project"
-            description="Idea 2. Crazy but may work."
-            link="#"
-        />
-    </li>
-    <li class="flex-shrink-0">
-        <x-project-card
-            title="Cool Experiment"
-            description="Idea 3. Testing new waters."
-            link="#"
-        />
-        <li class="flex-shrink-0">
-        <x-project-card
-            title="Trad Project"
-            description="Idea 4. Crazy but may work."
-            link="#"
-        />
-    </li>
-    
-</ul>
+            @forelse($projects as $project)
+                <li class="flex-shrink-0">
+                    <x-project-card
+                        :title="$project->title"
+                        :description="$project->description"
+                        :image="$project->image"
+                        :progress="$project->progress"
+                        :link="route('projects.show', $project)" 
+                    />
+                </li>
+            @empty
+                <li>No projects yet</li>
+            @endforelse
+        </ul>
+
 
 
     </section>
