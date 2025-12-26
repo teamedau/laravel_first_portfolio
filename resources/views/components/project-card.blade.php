@@ -1,8 +1,10 @@
-@props([
+@props([ 
     'title',
     'description',
     'image' => null,
-    'progress' => 70
+    'progress' => 70,
+    'tech' => [],          
+    'status' => null      
 ])
 
 <div class="project-card">
@@ -20,11 +22,19 @@
             </div>
 
             <ul class="project-markers">
-                <li></li>
-                <li></li>
-                <li></li>
+                <!-- Mostrar tecnologías -->
+                @foreach($tech as $t)
+                    <li>{{ $t }}</li>
+                @endforeach
             </ul>
         </div>
+
+        <!-- Mostrar status si existe -->
+        @if($status)
+            <div class="project-status">
+                <span>Status: {{ $status }}</span>
+            </div>
+        @endif
 
         <div class="project-progress">
             <div class="project-progress-meta">

@@ -34,11 +34,12 @@
             @forelse($projects as $project)
                 <li class="flex-shrink-0">
                     <x-project-card
-                        :title="$project->title"
-                        :description="$project->description"
+                        :title="$project->title" 
+                        :description="$project->description" 
                         :image="$project->image"
                         :progress="$project->progress"
-                        :link="route('projects.show', $project)" 
+                        :tech="$project->tech"       
+                        :status="$project->status"
                     />
                 </li>
             @empty
