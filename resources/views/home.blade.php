@@ -3,36 +3,35 @@
 @section('content')
 
 <!-- HERO -->
-<section class="max-w-6xl mx-auto px-6 py-20">
-    <h1 class="text-4xl font-semibold mb-6">
-        Experimental projects, built in public
-    </h1>
+<section class="hero section-dark">
+    <div class="container">
+        <h1>
+            Experimental projects, built in public
+        </h1>
 
-    <p class="text-gray-600">
-        Explore concepts, MVPs and live products.
-    </p>
+        <p>
+            Explore concepts, MVPs and live products.
+        </p>
+    </div>
 </section>
 
-<main>
+<!-- PROJECTS -->
+<section class="section-dark">
+    <div class="container">
 
-    <!-- PROJECTS -->
-    <section aria-labelledby="projects-title" class="max-w-6xl mx-auto px-6 py-20">
-
-        <!-- Header -->
         <header class="mb-12">
-            <h2 id="projects-title" class="text-2xl font-semibold mb-2">
+            <h2 id="projects-title">
                 Projects Lab
             </h2>
 
-            <p class="text-gray-600">
+            <p>
                 A selection of projects showcasing ideas, experiments, and work in progress.
             </p>
         </header>
 
-        <!-- Grid -->
-        <ul class="flex gap-6 overflow-x-auto pb-6 px-2 md:px-0">
+        <ul class="project-grid">
             @forelse($projects as $project)
-                <li class="flex-shrink-0">
+                <li>
                     <x-project-card
                         :title="$project->title" 
                         :description="$project->description" 
@@ -47,10 +46,7 @@
             @endforelse
         </ul>
 
-
-
-    </section>
-
-</main>
+    </div>
+</section>
 
 @endsection

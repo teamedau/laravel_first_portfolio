@@ -21,7 +21,7 @@ VARIABLES
     /* Text */
     --text-light: #fffffe;
     --text-muted: #b8c1ec;
-    --text-dark: #121629;
+    --text-dark: #232946;
 
     /* Accents */
     --accent: #eebbc3;
@@ -144,16 +144,25 @@ HERO
 ========================= */
 .hero {
     height: 360px;
-    background: linear-gradient(90deg,
+    background: linear-gradient(75deg,
             var(--text-muted) 0%,
-            var(--accent) 55%);
+            var(--accent) 75%);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 20px;
-    margin: 40px 0;
+    padding: 120px 0;
+    margin: 0;
 }
+
+.hero h1 {
+    color: var(--bg-dark);
+}
+
+.hero p {
+    color: var(--text-dark);
+}
+
 
 /* =========================
 TRENDING
@@ -183,16 +192,14 @@ PROJECTS
 .projects {
     list-style: none;
     justify-content: space-between;
-    display: flex;
     gap: 16px;
     padding: 60px 40px;
-    overflow-x: auto;
     margin: 10px;
 }
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     list-style: none;
     padding: 0;
