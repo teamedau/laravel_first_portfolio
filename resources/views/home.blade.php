@@ -3,17 +3,7 @@
 @section('content')
 
 <!-- HERO -->
-<section class="hero section-dark">
-    <div class="container">
-        <h1>
-            Experimental projects, built in public
-        </h1>
-
-        <p>
-            Explore concepts, MVPs and live products.
-        </p>
-    </div>
-</section>
+@include('components.hero')
 
 <!-- PROJECTS -->
 <section class="section-dark">

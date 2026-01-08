@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cause:wght@400;500;600;700&display=swap');
+@import './hero.css';
 @import "tailwindcss";
 
 
@@ -116,7 +117,7 @@ HEADER
 
 .logo {
     font-family: var(--font-title);
-    font-size: 14px;
+    font-size: 25px;
     color: var(--text-dark);
 }
 
