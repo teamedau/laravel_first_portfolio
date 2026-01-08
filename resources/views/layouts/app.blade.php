@@ -13,7 +13,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
-<body class="antialiased bg-[var(--bg-dark)] text-[var(--text-light)] font-[var(--font-body)]">
+<body class="antialiased bg-(var(--bg-dark)) text-(var(--text-light)) font-(var(--font-body))">
 
     <!-- HEADER -->
     <x-header />

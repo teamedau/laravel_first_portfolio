@@ -33,6 +33,7 @@ class ProjectApiTest extends TestCase
             'title' => 'Proyecto de prueba',
         ]);
     }
+
     /** GET @test */
     public function it_lists_projects_via_api()
     {
@@ -43,7 +44,7 @@ class ProjectApiTest extends TestCase
             'status' => 'mvp',
             'progress' => 20,
         ]);
-        $response = $this->getJson('/api/projects');
+        $response = $this->getJson(route('api.projects.index'));
 
         $response
             ->assertStatus(200)
@@ -54,4 +55,3 @@ class ProjectApiTest extends TestCase
             ]);
     }
 }
-

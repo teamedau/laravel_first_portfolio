@@ -42,7 +42,7 @@
                 <span>{{ $progress }}%</span>
             </div>
 
-            <div class="project-progress-bar">
+            <div class="progress-bar">
                 <span style="width: {{ $progress }}%"></span>
             </div>
         </div>

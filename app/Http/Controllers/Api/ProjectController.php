@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -13,20 +14,14 @@ class ProjectController extends Controller
         return Project::all();
     }
 
-    public function store(Request $request)
-{
-    $data = $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'tech' => 'nullable|string',
-        'status' => 'nullable|string',
-        'progress' => 'nullable|integer|min:0|max:100',
-    ]);
+    public function store(ProjectRequest $request)
+    {
+        $data = $request->validated();
 
-    $project = Project::create($data);
+        $project = Project::create($data);
 
-    return response()->json($project, 201);
-}
+        return response()->json($project, 201);
+    }
 
     public function show(Project $project)
     {
@@ -36,12 +31,14 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $project->update($request->all());
+
         return response()->json($project);
     }
 
     public function destroy(Project $project)
     {
         $project->delete();
+
         return response()->json(null, 204);
     }
 }

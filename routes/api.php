@@ -4,4 +4,4 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ProjectController;
 use Illuminate\Support\Facades\Route;
 
-Route::apiResource('projects', ProjectController::class);
+Route::apiResource('projects', ProjectController::class)->names('api.projects');
