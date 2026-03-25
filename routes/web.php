@@ -1,21 +1,44 @@
 <?php
-use App\Http\Controllers\ProjectController;
-
-Route::get('/', [ProjectController::class, 'index']);
-Route::get('/admin/projects', [ProjectController::class, 'admin']);
-Route::get('/admin/projects/create', [ProjectController::class, 'create']);
-Route::post('/admin/projects', [ProjectController::class, 'store']);
-Route::get('/', [ProjectController::class, 'index']);
-Route::resource('projects', ProjectController::class)->only(['index','show']);
-
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\FollowController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\ProjectUpdateController;
 
-Route::get('/', function () {
-    return view('home');
+// Dashboard (Breeze requiere esta ruta para los redirects post-login)
+Route::get('/dashboard', function () {
+    return auth()->user()->is_admin
+        ? redirect()->route('admin.dashboard')
+        : redirect()->route('home');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Rutas públicas
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
+Route::get('/about', function () { return view('about'); })->name('about');
+
+// Rutas que requieren login
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::post('/projects/{project}/follow', [FollowController::class, 'store'])->name('projects.follow');
+    Route::delete('/projects/{project}/follow', [FollowController::class, 'destroy'])->name('projects.unfollow');
+    Route::post('/projects/{project}/vote', [FollowController::class, 'vote'])->name('projects.vote');
+
+    // Perfil (Breeze)
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-use App\Http\Controllers\HomeController;
+// Panel admin (solo admin)
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::resource('projects', AdminProjectController::class);
+    Route::post('/projects/{project}/updates', [ProjectUpdateController::class, 'store'])->name('projects.updates.store');
+});
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
+require __DIR__.'/auth.php';

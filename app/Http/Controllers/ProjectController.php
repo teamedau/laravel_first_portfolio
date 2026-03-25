@@ -7,70 +7,43 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::latest()->paginate(9);
-        return view('projects.index', compact('projects'));
-    }
+        $query = Project::query();
 
-    public function create()
-    {
-        return view('projects.create');
-    }
-
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'link' => 'nullable|url',
-            'tech' => 'nullable|string|max:255',
-            'image' => 'nullable|image|max:2048'
-        ]);
-
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('projects', 'public');
-            $data['image'] = $path;
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
         }
 
-        Project::create($data);
+        if ($request->filled('category')) {
+            $query->where('category', $request->category);
+        }
 
-        return redirect()->route('projects.index')->with('success','Project created.');
+        if ($request->filled('q')) {
+            $query->where('title', 'like', '%' . $request->q . '%');
+        }
+
+        $sort = $request->get('sort', 'latest');
+        match ($sort) {
+            'votes'    => $query->orderByDesc('votes'),
+            'progress' => $query->orderByDesc('progress'),
+            default    => $query->latest(),
+        };
+
+        $projects   = $query->paginate(12)->withQueryString();
+        $categories = Project::whereNotNull('category')->distinct()->pluck('category');
+
+        return view('projects.index', compact('projects', 'categories'));
     }
 
     public function show(Project $project)
     {
-        return view('projects.show', compact('project'));
-    }
+        $project->load('updates', 'followers');
+        $userFollow = auth()->check()
+            ? $project->followRoleFor(auth()->user())
+            : null;
+        $userVoted = $project->hasVotedBy(auth()->user());
 
-    public function edit(Project $project)
-    {
-        return view('projects.edit', compact('project'));
-    }
-
-    public function update(Request $request, Project $project)
-    {
-        $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'link' => 'nullable|url',
-            'tech' => 'nullable|string|max:255',
-            'image' => 'nullable|image|max:2048'
-        ]);
-
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('projects', 'public');
-            $data['image'] = $path;
-        }
-
-        $project->update($data);
-
-        return redirect()->route('projects.show', $project)->with('success','Project Updated.');
-    }
-
-    public function destroy(Project $project)
-    {
-        $project->delete();
-        return redirect()->route('projects.index')->with('success','Project Deleted.');
+        return view('projects.show', compact('project', 'userFollow', 'userVoted'));
     }
 }

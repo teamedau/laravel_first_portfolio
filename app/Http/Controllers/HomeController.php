@@ -8,14 +8,15 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Traemos todos los proyectos
-        $projects = Project::all()->map(function($p){
-            // Convertimos tech de string a array si existe
-            $p->tech = $p->tech ? explode(',', $p->tech) : [];
-            return $p;
-        });
+        $featured = Project::where('featured', true)->latest()->take(4)->get();
+        $topVoted = Project::orderByDesc('votes')->take(4)->get();
+        $newest   = Project::latest()->take(4)->get();
 
-        // Enviamos los proyectos a la vista
-        return view('home', compact('projects'));
+        // Si no hay proyectos destacados, usar los más votados
+        if ($featured->isEmpty()) {
+            $featured = $topVoted;
+        }
+
+        return view('home', compact('featured', 'topVoted', 'newest'));
     }
 }
