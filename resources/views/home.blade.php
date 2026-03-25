@@ -10,8 +10,8 @@
 <section class="section-dark">
     <div class="container">
         <header style="margin-bottom: 40px;">
-            <h2 class="section-title">Proyectos Destacados</h2>
-            <p class="section-subtitle">Los proyectos que más interés están generando.</p>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">The projects generating the most interest right now.</p>
         </header>
 
         <ul class="project-grid">
@@ -63,8 +63,8 @@
 <section class="section-light">
     <div class="container">
         <header style="margin-bottom: 40px;">
-            <h2 class="section-title" style="color:var(--text-dark);">Más Votados</h2>
-            <p class="section-subtitle" style="color:#4a4a68;">Los proyectos que la comunidad está apoyando.</p>
+            <h2 class="section-title" style="color:var(--text-dark);">Top Voted</h2>
+            <p class="section-subtitle" style="color:#4a4a68;">The projects the community is backing.</p>
         </header>
 
         <ul class="project-grid">
@@ -104,11 +104,11 @@
     <div class="container">
         <header style="margin-bottom: 40px; display:flex; justify-content:space-between; align-items:flex-end;">
             <div>
-                <h2 class="section-title">Nuevos Proyectos</h2>
-                <p class="section-subtitle">Ideas y experimentos recién publicados.</p>
+                <h2 class="section-title">New Projects</h2>
+                <p class="section-subtitle">Fresh ideas and experiments, just published.</p>
             </div>
             <a href="{{ route('projects.index') }}" style="font-family:var(--font-title); color:var(--accent); font-size:15px; letter-spacing:1px;">
-                Ver todos →
+                View all →
             </a>
         </header>
 
@@ -153,8 +153,8 @@
 @if($featured->isEmpty() && $topVoted->isEmpty() && $newest->isEmpty())
 <section class="section-dark">
     <div class="container" style="text-align:center; padding: 80px 0;">
-        <h2>No hay proyectos todavía</h2>
-        <p style="margin-top:16px;">Pronto habrá proyectos aquí. Vuelve más tarde.</p>
+        <h2>No projects yet</h2>
+        <p style="margin-top:16px;">Projects are on their way. Check back soon.</p>
     </div>
 </section>
 @endif

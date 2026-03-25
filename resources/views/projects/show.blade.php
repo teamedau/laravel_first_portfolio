@@ -32,11 +32,11 @@
                 </div>
                 <div class="project-stat">
                     <span class="project-stat-value">{{ $project->votes }}</span>
-                    <span class="project-stat-label">Votos</span>
+                    <span class="project-stat-label">Votes</span>
                 </div>
                 <div class="project-stat">
                     <span class="project-stat-value">{{ $project->progress }}%</span>
-                    <span class="project-stat-label">Progreso</span>
+                    <span class="project-stat-label">Progress</span>
                 </div>
             </div>
 
@@ -44,7 +44,7 @@
                 <span class="status-badge status-{{ $project->status }}">{{ $project->status }}</span>
                 @if($project->launch_date)
                     <span style="font-size:13px; color:var(--text-muted);">
-                        Lanzamiento estimado: {{ $project->launch_date->format('M Y') }}
+                        Estimated launch: {{ $project->launch_date->format('M Y') }}
                     </span>
                 @endif
             </div>
@@ -64,7 +64,7 @@
                 <!-- Barra de progreso -->
                 <div style="margin-bottom: 32px;">
                     <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                        <span style="font-size:13px; color:var(--text-muted);">Progreso del proyecto</span>
+                        <span style="font-size:13px; color:var(--text-muted);">Project progress</span>
                         <span style="font-size:13px; font-family:var(--font-title);">{{ $project->progress }}%</span>
                     </div>
                     <div class="progress-bar" style="height:8px; --progress: {{ $project->progress }}%"></div>
@@ -73,7 +73,7 @@
                 <!-- Descripción -->
                 @if($project->description)
                     <div style="margin-bottom: 32px;">
-                        <h2 style="font-size:1.3rem; margin-bottom:16px;">Sobre el proyecto</h2>
+                        <h2 style="font-size:1.3rem; margin-bottom:16px;">About this project</h2>
                         <div style="color:var(--text-muted); line-height:1.8; white-space:pre-line;">{{ $project->description }}</div>
                     </div>
                 @endif
@@ -81,7 +81,7 @@
                 <!-- Tech stack -->
                 @if($project->tech)
                     <div style="margin-bottom: 32px;">
-                        <h3 style="font-size:1rem; margin-bottom:12px;">Tech Stack</h3>
+                        <h3 style="font-size:1rem; margin-bottom:12px;">Tech stack</h3>
                         <div class="tech-tags">
                             @foreach($project->tech_array as $tech)
                                 <span class="tech-tag">{{ $tech }}</span>
@@ -93,7 +93,7 @@
                 <!-- Timeline de updates -->
                 @if($project->updates->count())
                     <div class="updates-timeline">
-                        <h2 style="font-size:1.3rem; margin-bottom:24px;">Updates</h2>
+                        <h2 style="font-size:1.3rem; margin-bottom:24px;">What's new</h2>
                         @foreach($project->updates as $update)
                         <div class="timeline-item">
                             <div class="timeline-dot {{ $update->type }}"></div>
@@ -116,22 +116,22 @@
                     @auth
                         @if($userFollow)
                             <div class="already-following">
-                                ✓ Siguiendo como <strong>{{ str_replace('_', ' ', $userFollow) }}</strong>
+                                ✓ Following as <strong>{{ str_replace('_', ' ', $userFollow) }}</strong>
                             </div>
                             <form method="POST" action="{{ route('projects.unfollow', $project) }}">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="action-btn action-btn--secondary" style="margin-bottom:12px;">
-                                    Dejar de seguir
+                                    Unfollow
                                 </button>
                             </form>
                         @else
-                            <h3 style="margin-bottom:16px;">Únete al proyecto</h3>
+                            <h3 style="margin-bottom:16px;">Join this project</h3>
 
                             <form method="POST" action="{{ route('projects.follow', $project) }}">
                                 @csrf
                                 <input type="hidden" name="role" value="follower">
                                 <button type="submit" class="action-btn action-btn--secondary">
-                                    Seguir proyecto
+                                    Follow project
                                 </button>
                             </form>
 
@@ -139,7 +139,7 @@
                                 @csrf
                                 <input type="hidden" name="role" value="tester">
                                 <button type="submit" class="action-btn action-btn--primary">
-                                    Quiero ser Tester
+                                    Become a Tester
                                 </button>
                             </form>
 
@@ -155,33 +155,33 @@
                         <form method="POST" action="{{ route('projects.vote', $project) }}" style="margin-top:12px;">
                             @csrf
                             <button type="submit" class="vote-btn {{ $userVoted ? 'voted' : '' }}">
-                                ▲ {{ $userVoted ? 'Votado' : 'Votar' }} · {{ $project->votes }}
+                                ▲ {{ $userVoted ? 'Voted' : 'Upvote' }} · {{ $project->votes }}
                             </button>
                         </form>
 
                     @else
                         <div class="login-prompt">
                             <p style="margin-bottom:12px; font-size:14px; color:#4a4a68;">
-                                Regístrate para seguir este proyecto, votar y recibir updates.
+                                Sign up to follow this project, upvote, and get updates.
                             </p>
                             <a href="{{ route('register') }}" class="action-btn action-btn--primary" style="display:block; margin-bottom:10px;">
-                                Crear cuenta gratis
+                                Create a free account
                             </a>
                             <a href="{{ route('login') }}" class="action-btn action-btn--secondary" style="display:block;">
-                                Iniciar sesión
+                                Sign in
                             </a>
                         </div>
 
                         <div style="margin-top:16px; text-align:center;">
                             <span style="font-family:var(--font-title); font-size:1.3rem; color:var(--text-muted);">▲ {{ $project->votes }}</span>
-                            <p style="font-size:12px; color:var(--text-muted); margin-top:4px;">votos</p>
+                            <p style="font-size:12px; color:var(--text-muted); margin-top:4px;">votes</p>
                         </div>
                     @endauth
 
                     @if($project->link)
                         <hr style="border-color: rgba(255,255,255,0.1); margin: 16px 0;">
                         <a href="{{ $project->link }}" target="_blank" rel="noopener" class="action-btn action-btn--secondary" style="display:block; text-align:center;">
-                            Ver proyecto externo →
+                            View project →
                         </a>
                     @endif
                 </div>

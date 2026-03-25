@@ -19,7 +19,7 @@ class FollowController extends Controller
             ['role' => $request->role]
         );
 
-        return back()->with('success', '¡Te has unido al proyecto!');
+        return back()->with('success', 'You\'ve joined the project!');
     }
 
     public function destroy(Project $project)
@@ -28,7 +28,7 @@ class FollowController extends Controller
             ->where('project_id', $project->id)
             ->delete();
 
-        return back()->with('success', 'Has dejado de seguir el proyecto.');
+        return back()->with('success', 'You\'ve unfollowed this project.');
     }
 
     public function vote(Project $project)
@@ -46,7 +46,7 @@ class FollowController extends Controller
                 ->where('project_id', $project->id)
                 ->delete();
             $project->decrement('votes');
-            return back()->with('info', 'Voto retirado.');
+            return back()->with('info', 'Vote removed.');
         }
 
         \DB::table('project_votes')->insert([
@@ -56,6 +56,6 @@ class FollowController extends Controller
         ]);
         $project->increment('votes');
 
-        return back()->with('success', '¡Voto registrado!');
+        return back()->with('success', 'Vote recorded!');
     }
 }

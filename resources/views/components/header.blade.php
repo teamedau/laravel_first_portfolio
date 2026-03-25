@@ -19,13 +19,13 @@
                     <form method="POST" action="{{ route('logout') }}" style="display:inline;">
                         @csrf
                         <button type="submit" style="background:none; color:var(--text-dark); font-family:var(--font-title); font-size:inherit; padding:0; cursor:pointer;">
-                            Salir
+                            Sign out
                         </button>
                     </form>
                 </li>
             @else
-                <li><a href="{{ route('login') }}">Entrar</a></li>
-                <li><a href="{{ route('register') }}" class="nav-cta">Registrarse</a></li>
+                <li><a href="{{ route('login') }}">Sign in</a></li>
+                <li><a href="{{ route('register') }}" class="nav-cta">Register</a></li>
             @endauth
         </ul>
     </nav>

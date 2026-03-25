@@ -5,8 +5,8 @@
     <div class="container">
 
         <header style="margin-bottom: 40px;">
-            <h2 class="section-title">Todos los Proyectos</h2>
-            <p class="section-subtitle">Explora proyectos en desarrollo, experimenta con ideas y únete como tester.</p>
+            <h2 class="section-title">All Projects</h2>
+            <p class="section-subtitle">Explore projects in development, discover new ideas, and join as a tester.</p>
         </header>
 
         <!-- Filtros y buscador -->
@@ -18,13 +18,13 @@
                     type="text"
                     name="q"
                     value="{{ request('q') }}"
-                    placeholder="Buscar proyecto..."
+                    placeholder="Search projects..."
                     style="padding:8px 14px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); color:var(--text-light); font-size:14px; min-width:200px;"
                 >
 
                 <!-- Status -->
                 <select name="status" style="padding:8px 14px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background:var(--bg-dark); color:var(--text-muted); font-size:14px;">
-                    <option value="">Todos los status</option>
+                    <option value="">All statuses</option>
                     <option value="concept"  {{ request('status') === 'concept'  ? 'selected' : '' }}>Concept</option>
                     <option value="mvp"      {{ request('status') === 'mvp'      ? 'selected' : '' }}>MVP</option>
                     <option value="live"     {{ request('status') === 'live'     ? 'selected' : '' }}>Live</option>
@@ -33,7 +33,7 @@
                 <!-- Categoría -->
                 @if($categories->count())
                 <select name="category" style="padding:8px 14px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background:var(--bg-dark); color:var(--text-muted); font-size:14px;">
-                    <option value="">Todas las categorías</option>
+                    <option value="">All categories</option>
                     @foreach($categories as $cat)
                         <option value="{{ $cat }}" {{ request('category') === $cat ? 'selected' : '' }}>{{ $cat }}</option>
                     @endforeach
@@ -42,17 +42,17 @@
 
                 <!-- Ordenar -->
                 <select name="sort" style="padding:8px 14px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background:var(--bg-dark); color:var(--text-muted); font-size:14px;">
-                    <option value="latest"   {{ request('sort', 'latest') === 'latest'   ? 'selected' : '' }}>Más recientes</option>
-                    <option value="votes"    {{ request('sort') === 'votes'    ? 'selected' : '' }}>Más votados</option>
-                    <option value="progress" {{ request('sort') === 'progress' ? 'selected' : '' }}>Más avanzados</option>
+                    <option value="latest"   {{ request('sort', 'latest') === 'latest'   ? 'selected' : '' }}>Most recent</option>
+                    <option value="votes"    {{ request('sort') === 'votes'    ? 'selected' : '' }}>Most voted</option>
+                    <option value="progress" {{ request('sort') === 'progress' ? 'selected' : '' }}>Most advanced</option>
                 </select>
 
                 <button type="submit" style="padding:8px 20px; border-radius:6px; background:var(--accent); color:var(--bg-dark); font-family:var(--font-title); font-size:14px; cursor:pointer; border:none;">
-                    Filtrar
+                    Filter
                 </button>
 
                 @if(request()->hasAny(['q','status','category','sort']))
-                    <a href="{{ route('projects.index') }}" style="font-size:13px; color:var(--text-muted);">Limpiar filtros</a>
+                    <a href="{{ route('projects.index') }}" style="font-size:13px; color:var(--text-muted);">Clear filters</a>
                 @endif
             </div>
         </form>
@@ -109,8 +109,8 @@
 
         @else
             <div style="text-align:center; padding: 60px 0;">
-                <p>No se encontraron proyectos con esos filtros.</p>
-                <a href="{{ route('projects.index') }}" style="color:var(--accent); font-family:var(--font-title); margin-top:12px; display:inline-block;">Ver todos los proyectos</a>
+                <p>No projects found matching those filters.</p>
+                <a href="{{ route('projects.index') }}" style="color:var(--accent); font-family:var(--font-title); margin-top:12px; display:inline-block;">View all projects</a>
             </div>
         @endif
 

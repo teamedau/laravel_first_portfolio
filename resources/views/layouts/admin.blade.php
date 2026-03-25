@@ -20,17 +20,17 @@
                         Dashboard
                     </a>
                     <a href="{{ route('admin.projects.index') }}" class="{{ request()->routeIs('admin.projects.*') ? 'active' : '' }}">
-                        Proyectos
+                        Projects
                     </a>
                     <a href="{{ route('home') }}" target="_blank">
-                        Ver sitio →
+                        View site →
                     </a>
                 </nav>
                 <div class="admin-user">
                     <span>{{ auth()->user()->name }}</span>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit">Salir</button>
+                        <button type="submit">Sign out</button>
                     </form>
                 </div>
             </aside>
