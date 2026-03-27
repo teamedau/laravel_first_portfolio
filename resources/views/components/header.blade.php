@@ -1,7 +1,7 @@
 <header class="main-header">
     <div class="logo">
-        <a href="{{ route('home') }}" style="color:inherit; text-decoration:none;">
-            <h1>Vica Projects</h1>
+        <a href="{{ route('home') }}" style="text-decoration:none;">
+            <img src="/logo.svg" alt="Vica Projects" class="site-logo">
         </a>
     </div>
 
@@ -18,14 +18,9 @@
                 <li>
                     <form method="POST" action="{{ route('logout') }}" style="display:inline;">
                         @csrf
-                        <button type="submit" style="background:none; color:var(--text-dark); font-family:var(--font-title); font-size:inherit; padding:0; cursor:pointer;">
-                            Sign out
-                        </button>
+                        <button type="submit" class="nav-signout-btn">Sign out</button>
                     </form>
                 </li>
-            @else
-                <li><a href="{{ route('login') }}">Sign in</a></li>
-                <li><a href="{{ route('register') }}" class="nav-cta">Register</a></li>
             @endauth
         </ul>
     </nav>

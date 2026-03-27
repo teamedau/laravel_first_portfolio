@@ -13,7 +13,9 @@
             <!-- Sidebar -->
             <aside class="admin-sidebar">
                 <div class="admin-logo">
-                    <a href="{{ route('home') }}">Vica Projects</a>
+                    <a href="{{ route('home') }}">
+                        <img src="/logo.svg" alt="Vica Projects" class="admin-logo-img">
+                    </a>
                 </div>
                 <nav class="admin-nav">
                     <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
@@ -21,6 +23,9 @@
                     </a>
                     <a href="{{ route('admin.projects.index') }}" class="{{ request()->routeIs('admin.projects.*') ? 'active' : '' }}">
                         Projects
+                    </a>
+                    <a href="{{ route('profile.edit') }}" class="{{ request()->routeIs('profile.*') ? 'active' : '' }}">
+                        My Profile
                     </a>
                     <a href="{{ route('home') }}" target="_blank">
                         View site →

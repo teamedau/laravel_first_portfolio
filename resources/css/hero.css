@@ -1,5 +1,5 @@
 /* =========================
-HERO SECTION
+   HERO SECTION
 ========================= */
 .hero-section {
     min-height: 100vh;
@@ -10,95 +10,247 @@ HERO SECTION
     overflow: hidden;
 }
 
-/* Dot grid background */
-.hero-grid-bg {
+/* Glow blobs */
+.hero-blob {
     position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-    background-size: 36px 36px;
+    border-radius: 50%;
+    filter: blur(130px);
     pointer-events: none;
+    will-change: transform;
 }
 
-/* Vignette to fade dots toward edges */
-.hero-grid-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, transparent 40%, rgba(0,0,0,0.65) 100%);
+.hero-blob--1 {
+    width: 680px;
+    height: 520px;
+    background: radial-gradient(ellipse, rgba(79, 70, 229, 0.22) 0%, transparent 70%);
+    top: -140px;
+    left: -160px;
 }
 
-.hero-content {
+.hero-blob--2 {
+    width: 520px;
+    height: 480px;
+    background: radial-gradient(ellipse, rgba(52, 211, 153, 0.10) 0%, transparent 70%);
+    bottom: -60px;
+    right: -80px;
+}
+
+/* Inner layout */
+.hero-inner {
     position: relative;
     z-index: 1;
-    padding-top: 160px;
-    padding-bottom: 160px;
+    padding-top: 140px;
+    padding-bottom: 100px;
 }
 
-.hero-eyebrow {
-    display: block;
-    font-family: var(--font-body);
+/* Badge */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(79, 70, 229, 0.10);
+    border: 1px solid rgba(129, 140, 248, 0.22);
+    color: var(--accent);
     font-size: 12px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 40px;
+    font-family: var(--font-body);
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 36px;
 }
 
+.hero-badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(129, 140, 248, 0.6);
+}
+
+/* Headline */
 .hero-title {
     font-family: var(--font-title);
-    font-size: clamp(3.5rem, 10vw, 10rem);
-    line-height: 0.92;
-    color: #ffffff;
+    font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+    line-height: 1.02;
+    color: var(--text-light);
     text-transform: uppercase;
-    margin: 0 0 48px;
+    margin: 0 0 28px;
+    max-width: 700px;
 }
 
-/* Each line is wrapped in overflow:hidden so the slide-up clips cleanly */
+/* Line reveal wrapper — overflow:hidden clips the slide-up */
 .hero-line-wrap {
     display: block;
     overflow: hidden;
-    padding-bottom: 0.06em;
+    padding-bottom: 0.04em;
 }
 
 .hero-line-inner {
     display: block;
 }
 
-.hero-sub {
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.45);
-    max-width: 460px;
-    margin-bottom: 40px;
-    line-height: 1.75;
+/* Gradient text on second line */
+.hero-gradient-text {
+    background: linear-gradient(95deg, var(--accent) 0%, var(--teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
+/* Subtext */
+.hero-sub {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin-bottom: 36px;
+    line-height: 1.8;
+}
+
+/* CTA row */
 .hero-cta-row {
     display: flex;
-    gap: 16px;
+    gap: 14px;
     flex-wrap: wrap;
     align-items: center;
+    margin-bottom: 72px;
 }
 
-.btn-outline-light {
+/* =========================
+   HERO BUTTONS
+========================= */
+.btn-accent {
     display: inline-block;
-    padding: 10px 20px;
-    border: 1px solid rgba(255,255,255,0.22);
-    color: rgba(255,255,255,0.75);
-    border-radius: 6px;
+    background: var(--accent-solid);
+    color: #ffffff;
+    padding: 11px 24px;
+    border-radius: 8px;
     font-family: var(--font-title);
     font-size: 15px;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s, box-shadow 0.2s;
+}
+
+.btn-accent:hover {
+    opacity: 0.88;
+    box-shadow: 0 0 24px rgba(79, 70, 229, 0.38);
+}
+
+.btn-ghost {
+    display: inline-block;
+    padding: 11px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.65);
+    border-radius: 8px;
+    font-family: var(--font-title);
+    font-size: 15px;
+    letter-spacing: 0.8px;
     transition: border-color 0.2s, color 0.2s;
 }
 
-.btn-outline-light:hover {
-    border-color: rgba(255,255,255,0.6);
+.btn-ghost:hover {
+    border-color: rgba(255, 255, 255, 0.4);
     color: #ffffff;
 }
 
+/* =========================
+   ROLE CARDS (characters)
+========================= */
+.hero-roles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 840px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 48px;
+}
+
+.role-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 22px 20px;
+    transition: background 0.25s, border-color 0.25s;
+}
+
+.role-card:hover {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* The figure container */
+.role-figure {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.role-person {
+    width: 36px;
+    height: 36px;
+}
+
+.role-figure--amber {
+    background: rgba(245, 158, 11, 0.12);
+    color: #f59e0b;
+}
+
+.role-figure--violet {
+    background: rgba(167, 139, 250, 0.12);
+    color: #a78bfa;
+}
+
+.role-figure--teal {
+    background: rgba(52, 211, 153, 0.12);
+    color: var(--teal);
+}
+
+.role-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.role-card strong {
+    font-family: var(--font-title);
+    font-size: 17px;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+    font-weight: 400;
+}
+
+.role-card p {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+    .hero-roles {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 @media (max-width: 640px) {
-    .hero-content {
-        padding-top: 120px;
-        padding-bottom: 100px;
+    .hero-inner {
+        padding-top: 100px;
+        padding-bottom: 72px;
+    }
+    .hero-roles {
+        grid-template-columns: 1fr;
+    }
+    .hero-cta-row {
+        margin-bottom: 52px;
     }
 }
