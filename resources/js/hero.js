@@ -1,17 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const hero = document.querySelector('[data-hero]')
-    if (!hero || typeof gsap === 'undefined') return
+    if (typeof gsap === 'undefined') return
 
-    window.addEventListener('mousemove', (e) => {
-        const { clientX, clientY } = e
-        const x = Math.round((clientX / window.innerWidth) * 100)
-        const y = Math.round((clientY / window.innerHeight) * 100)
+    const lines  = document.querySelectorAll('.hero-line-inner')
+    const fades  = document.querySelectorAll('[data-anim="fade"]')
 
-        gsap.to(hero, {
-            '--x': `${x}%`,
-            '--y': `${y}%`,
-            duration: 0.3,
-            ease: 'sine.out',
+    if (!lines.length) return
+
+    // Start hidden
+    gsap.set(lines, { y: '105%' })
+    gsap.set(fades, { opacity: 0, y: 18 })
+
+    // Staggered reveal timeline
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+    tl.to(lines, {
+            y: '0%',
+            duration: 1,
+            stagger: 0.12,
+            delay: 0.15,
         })
-    })
+        .to(fades, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+        }, '-=0.55')
 })
