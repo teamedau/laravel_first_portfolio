@@ -19,6 +19,6 @@ class ProjectUpdateController extends Controller
 
         $project->updates()->create($request->only('title', 'content', 'type'));
 
-        return back()->with('success', 'Update publicado.');
+        return back()->with('success', 'Update published.');
     }
 }

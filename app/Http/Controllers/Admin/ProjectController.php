@@ -44,7 +44,7 @@ class ProjectController extends Controller
 
         Project::create($data);
 
-        return redirect()->route('admin.projects.index')->with('success', 'Proyecto creado.');
+        return redirect()->route('admin.projects.index')->with('success', 'Project created.');
     }
 
     public function edit(Project $project)
@@ -79,7 +79,7 @@ class ProjectController extends Controller
 
         $project->update($data);
 
-        return redirect()->route('admin.projects.index')->with('success', 'Proyecto actualizado.');
+        return redirect()->route('admin.projects.index')->with('success', 'Project updated.');
     }
 
     public function destroy(Project $project)
@@ -89,7 +89,7 @@ class ProjectController extends Controller
         }
         $project->delete();
 
-        return redirect()->route('admin.projects.index')->with('success', 'Proyecto eliminado.');
+        return redirect()->route('admin.projects.index')->with('success', 'Project deleted.');
     }
 
     public function show(Project $project)

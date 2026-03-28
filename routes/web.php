@@ -23,12 +23,12 @@ Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('pro
 Route::get('/about', function () { return view('about'); })->name('about');
 
 // Rutas que requieren login
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::post('/projects/{project}/follow', [FollowController::class, 'store'])->name('projects.follow');
     Route::delete('/projects/{project}/follow', [FollowController::class, 'destroy'])->name('projects.unfollow');
     Route::post('/projects/{project}/vote', [FollowController::class, 'vote'])->name('projects.vote');
 
-    // Perfil (Breeze)
+    // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

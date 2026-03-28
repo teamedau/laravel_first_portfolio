@@ -33,6 +33,10 @@
             <span class="admin-stat-value">{{ $stats['total_followers'] }}</span>
             <span class="admin-stat-label">Followers</span>
         </div>
+        <div class="admin-stat-card">
+            <span class="admin-stat-value">{{ $stats['total_votes'] }}</span>
+            <span class="admin-stat-label">Total votes</span>
+        </div>
     </div>
 
     <!-- Projects list -->

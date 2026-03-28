@@ -1,10 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="admin-page admin-page--form">
+<div class="admin-page admin-page--profile">
     <div class="admin-page-header">
         <h1>My Profile</h1>
     </div>
+
+    <div class="profile-grid">
 
     {{-- Profile info --}}
     <div class="profile-section">
@@ -73,5 +75,7 @@
             </div>
         </form>
     </div>
+
+    </div>{{-- end .profile-grid --}}
 </div>
 @endsection
