@@ -22,14 +22,14 @@
             </div>
 
             <ul class="project-markers">
-                <!-- Mostrar tecnologías -->
+                <!-- Tech stack tags -->
                 @foreach($tech as $t)
                     <li>{{ $t }}</li>
                 @endforeach
             </ul>
         </div>
 
-        <!-- Mostrar status si existe -->
+        <!-- Show status if set -->
         @if($status)
             <div class="project-status">
                 <span>Status: {{ $status }}</span>

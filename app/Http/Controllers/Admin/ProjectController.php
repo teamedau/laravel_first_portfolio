@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request\ProjectStoreRequest;
+use Illuminate\Http\Request\ProjectUpdateRequest;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -20,21 +21,9 @@ class ProjectController extends Controller
         return view('admin.projects.create');
     }
 
-    public function store(Request $request)
+    public function store(ProjectStoreRequest $request, Project $project)
     {
-        $data = $request->validate([
-            'title'        => 'required|string|max:255',
-            'tagline'      => 'nullable|string|max:255',
-            'description'  => 'nullable|string',
-            'tech'         => 'nullable|string|max:255',
-            'link'         => 'nullable|url|max:255',
-            'status'       => 'required|in:concept,mvp,live',
-            'progress'     => 'required|integer|min:0|max:100',
-            'category'     => 'nullable|string|max:100',
-            'launch_date'  => 'nullable|date',
-            'featured'     => 'boolean',
-            'image'        => 'nullable|image|max:2048',
-        ]);
+        $data = $request->validate();
 
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('projects', 'public');
@@ -57,21 +46,9 @@ class ProjectController extends Controller
         return view('admin.projects.edit', compact('project', 'testers'));
     }
 
-    public function update(Request $request, Project $project)
+    public function update(ProjectUpdateRequest $request, Project $project)
     {
-        $data = $request->validate([
-            'title'        => 'required|string|max:255',
-            'tagline'      => 'nullable|string|max:255',
-            'description'  => 'nullable|string',
-            'tech'         => 'nullable|string|max:255',
-            'link'         => 'nullable|url|max:255',
-            'status'       => 'required|in:concept,mvp,live',
-            'progress'     => 'required|integer|min:0|max:100',
-            'category'     => 'nullable|string|max:100',
-            'launch_date'  => 'nullable|date',
-            'featured'     => 'boolean',
-            'image'        => 'nullable|image|max:2048',
-        ]);
+        $data = $request->validate();
 
         if ($request->hasFile('image')) {
             if ($project->image) {

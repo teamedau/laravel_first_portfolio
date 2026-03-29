@@ -5,7 +5,7 @@
 {{-- HERO --}}
 @include('components.hero')
 
-{{-- PROYECTOS DESTACADOS --}}
+{{-- FEATURED PROJECTS --}}
 @if($featured->count())
 <section class="section-dark">
     <div class="container">
@@ -58,13 +58,13 @@
 </section>
 @endif
 
-{{-- MÁS VOTADOS --}}
+{{-- TOP VOTED --}}
 @if($topVoted->count())
 <section class="section-light">
     <div class="container">
         <header style="margin-bottom: 40px;">
             <h2 class="section-title" style="color:var(--text-dark);">Top Voted</h2>
-            <p class="section-subtitle" style="color:#4a4a68;">The projects the community is backing.</p>
+            <p class="section-subtitle" style="color:var(--text-muted);">The projects the community is backing.</p>
         </header>
 
         <ul class="project-grid">
@@ -86,7 +86,7 @@
                         <div class="project-card-meta">
                             <span class="status-badge status-{{ $project->status }}">{{ $project->status }}</span>
                             <span class="project-card-votes">▲ {{ $project->votes }}</span>
-                            <span style="font-size:12px; color:#4a4a68;">{{ $project->followers_count }} followers</span>
+                            <span style="font-size:12px; color:var(--text-muted);">{{ $project->followers_count }} followers</span>
                         </div>
 
                         <div class="progress-bar" style="--progress: {{ $project->progress }}%"></div>
@@ -98,7 +98,7 @@
 </section>
 @endif
 
-{{-- NUEVOS PROYECTOS --}}
+{{-- NEW PROJECTS --}}
 @if($newest->count())
 <section class="section-dark">
     <div class="container">
@@ -137,7 +137,7 @@
                         <div class="project-card-meta">
                             <span class="status-badge status-{{ $project->status }}">{{ $project->status }}</span>
                             @if($project->launch_date)
-                                <span style="font-size:11px; color:#4a4a68;">{{ $project->launch_date->format('M Y') }}</span>
+                                <span style="font-size:11px; color:var(--text-muted);">{{ $project->launch_date->format('M Y') }}</span>
                             @endif
                         </div>
 

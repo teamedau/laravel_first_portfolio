@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Admin — {{ config('app.name', 'Vica Projects') }}</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @stack('styles')
     </head>
     <body class="admin-body">
 
@@ -56,5 +57,6 @@
             </div>
         </div>
 
+        @stack('scripts')
     </body>
 </html>

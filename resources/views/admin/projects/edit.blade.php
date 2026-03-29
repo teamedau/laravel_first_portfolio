@@ -95,7 +95,7 @@
 
     <!-- Testers -->
     <div class="admin-section">
-        <h2>Testers <span style="font-size:14px; font-weight:400; color:#64748b;">({{ $testers->count() }})</span></h2>
+        <h2>Testers <span style="font-size:14px; font-weight:400; color:var(--text-muted);">({{ $testers->count() }})</span></h2>
         <p class="admin-section-sub">Users who signed up to test this project on the platform.</p>
 
         @if($testers->count())
@@ -118,7 +118,7 @@
             </tbody>
         </table>
         @else
-        <p style="color:#94a3b8; font-size:14px; margin-top:12px;">No testers yet.</p>
+        <p style="color:var(--text-muted); font-size:14px; margin-top:12px;">No testers yet.</p>
         @endif
     </div>
 

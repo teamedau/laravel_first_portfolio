@@ -9,11 +9,11 @@
             <p class="section-subtitle">Explore projects in development, discover new ideas, and join as a tester.</p>
         </header>
 
-        <!-- Filtros y buscador -->
+        <!-- Filters and search -->
         <form method="GET" action="{{ route('projects.index') }}" style="margin-bottom: 40px;">
             <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
 
-                <!-- Buscador -->
+                <!-- Search -->
                 <input
                     type="text"
                     name="q"
@@ -30,7 +30,7 @@
                     <option value="live"     {{ request('status') === 'live'     ? 'selected' : '' }}>Live</option>
                 </select>
 
-                <!-- Categoría -->
+                <!-- Category -->
                 @if($categories->count())
                 <select name="category" style="padding:8px 14px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background:var(--bg-dark); color:var(--text-muted); font-size:14px;">
                     <option value="">All categories</option>
@@ -40,7 +40,7 @@
                 </select>
                 @endif
 
-                <!-- Ordenar -->
+                <!-- Sort -->
                 <select name="sort" style="padding:8px 14px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background:var(--bg-dark); color:var(--text-muted); font-size:14px;">
                     <option value="latest"   {{ request('sort', 'latest') === 'latest'   ? 'selected' : '' }}>Most recent</option>
                     <option value="votes"    {{ request('sort') === 'votes'    ? 'selected' : '' }}>Most voted</option>
@@ -57,7 +57,7 @@
             </div>
         </form>
 
-        <!-- Grid de proyectos -->
+        <!-- Projects grid -->
         @if($projects->count())
             <ul class="project-grid">
                 @foreach($projects as $project)
@@ -93,7 +93,7 @@
                                     <span class="project-card-votes">▲ {{ $project->votes }}</span>
                                 @endif
                                 @if($project->followers_count > 0)
-                                    <span style="font-size:11px; color:#4a4a68;">{{ $project->followers_count }} followers</span>
+                                    <span style="font-size:11px; color:var(--text-muted);">{{ $project->followers_count }} followers</span>
                                 @endif
                             </div>
 

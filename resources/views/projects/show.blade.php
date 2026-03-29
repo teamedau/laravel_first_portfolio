@@ -3,7 +3,7 @@
 @section('content')
 <div class="project-show">
 
-    <!-- Hero del proyecto -->
+    <!-- Project hero -->
     <div class="project-show-hero">
         <div class="container">
             @if($project->category)
@@ -156,7 +156,7 @@
 
                     @else
                         <div class="login-prompt">
-                            <p style="margin-bottom:12px; font-size:14px; color:#4a4a68;">
+                            <p style="margin-bottom:12px; font-size:14px; color:var(--text-muted);">
                                 Sign up to follow this project, upvote, and get updates.
                             </p>
                             <a href="{{ route('register') }}" class="action-btn action-btn--primary" style="display:block; margin-bottom:10px;">

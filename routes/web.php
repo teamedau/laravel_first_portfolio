@@ -9,20 +9,20 @@ use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\ProjectUpdateController;
 
-// Dashboard (Breeze requiere esta ruta para los redirects post-login)
+// Dashboard (Breeze requires this route for post-login redirects)
 Route::get('/dashboard', function () {
     return auth()->user()->is_admin
         ? redirect()->route('admin.dashboard')
         : redirect()->route('home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Rutas públicas
+// Public routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 Route::get('/about', function () { return view('about'); })->name('about');
 
-// Rutas que requieren login
+// Routes that require login
 Route::middleware(['auth'])->group(function () {
     Route::post('/projects/{project}/follow', [FollowController::class, 'store'])->name('projects.follow');
     Route::delete('/projects/{project}/follow', [FollowController::class, 'destroy'])->name('projects.unfollow');
@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Panel admin (solo admin)
+// Admin panel (admin only)
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('projects', AdminProjectController::class);

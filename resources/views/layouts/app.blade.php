@@ -7,15 +7,14 @@
 
         <title>{{ config('app.name', 'Vica Projects') }}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+        <!-- Fonts: loaded via @import in app.css (Bebas Neue + Nunito) -->
 
         <!-- GSAP (must load before app.js) -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @stack('styles')
     </head>
     <body>
         @include('components.header')
@@ -35,5 +34,6 @@
         </main>
 
         @include('components.footer')
+        @stack('scripts')
     </body>
 </html>

@@ -12,7 +12,7 @@ class HomeController extends Controller
         $topVoted = Project::where('votes', '>', 0)->orderByDesc('votes')->take(4)->get();
         $newest   = Project::latest()->take(4)->get();
 
-        // Si no hay proyectos destacados, usar los más votados
+        // If no featured projects exist, fall back to top voted
         if ($featured->isEmpty()) {
             $featured = $topVoted;
         }

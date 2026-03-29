@@ -136,7 +136,7 @@ HEADER
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
-    position: sticky;
+    position: static;
     top: 0;
     z-index: 100;
 }
@@ -147,7 +147,7 @@ HEADER
 }
 
 .site-logo {
-    height: 150px;
+    height: 110px;
     width: auto;
     display: block;
 }
@@ -162,7 +162,7 @@ HEADER
 .nav-list a {
     font-family: var(--font-title);
     color: rgba(226, 232, 246, 0.65);
-    font-size: 15px;
+    font-size: 20px;
     transition: color 0.18s;
 }
 
@@ -474,7 +474,7 @@ PROJECT SHOW PAGE
 .project-show-image {
     width: 100%;
     max-height: 400px;
-    object-fit: cover;
+    object-fit: scale-down;
     border-radius: 12px;
     margin-bottom: 32px;
 }
@@ -1556,20 +1556,10 @@ ADMIN PANEL
     padding: 4px 10px;
     border-radius: 5px;
     font-size: 12.5px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.07);
-    color: var(--text-muted);
-    font-family: var(--font-body);
-}
-
-.about-tech-tag--ai {
     background: rgba(52, 211, 153, 0.06);
     border-color: rgba(52, 211, 153, 0.18);
     color: #7dd3b8;
-}
-
-.about-tech-group-name--ai {
-    color: var(--teal);
+    font-family: var(--font-body);
 }
 
 /* =========================
