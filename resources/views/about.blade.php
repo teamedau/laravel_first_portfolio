@@ -114,6 +114,17 @@
             </div>
 
             <div class="about-tech-group">
+                <span class="about-tech-group-name">AI &amp; Tooling</span>
+                <div class="about-tech-tags">
+                    <span class="about-tech-tag about-tech-tag--ai">Claude Code</span>
+                    <span class="about-tech-tag about-tech-tag--ai">MCP</span>
+                    <span class="about-tech-tag about-tech-tag--ai">Laravel AI</span>
+                    <span class="about-tech-tag about-tech-tag--ai">Prompt Engineering</span>
+                    <span class="about-tech-tag about-tech-tag--ai">Markdown</span>
+                </div>
+            </div>
+
+            <div class="about-tech-group">
                 <span class="about-tech-group-name">Databases</span>
                 <div class="about-tech-tags">
                     <span class="about-tech-tag">PostgreSQL</span>

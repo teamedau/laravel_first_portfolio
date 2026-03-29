@@ -93,6 +93,35 @@
         </div>
     </form>
 
+    <!-- Testers -->
+    <div class="admin-section">
+        <h2>Testers <span style="font-size:14px; font-weight:400; color:#64748b;">({{ $testers->count() }})</span></h2>
+        <p class="admin-section-sub">Users who signed up to test this project on the platform.</p>
+
+        @if($testers->count())
+        <table class="admin-table" style="margin-top:16px;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Signed up</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($testers as $tester)
+                <tr>
+                    <td>{{ $tester->user->name }}</td>
+                    <td>{{ $tester->user->email }}</td>
+                    <td>{{ $tester->created_at->format('d M Y') }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        @else
+        <p style="color:#94a3b8; font-size:14px; margin-top:12px;">No testers yet.</p>
+        @endif
+    </div>
+
     <!-- Project updates / Changelog -->
     <div class="admin-section">
         <h2>Project updates</h2>

@@ -49,7 +49,12 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $testers = $project->followers()
+            ->where('role', 'tester')
+            ->with('user')
+            ->get();
+
+        return view('admin.projects.edit', compact('project', 'testers'));
     }
 
     public function update(Request $request, Project $project)

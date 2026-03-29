@@ -27,10 +27,6 @@
                     <span class="project-stat-label">Testers</span>
                 </div>
                 <div class="project-stat">
-                    <span class="project-stat-value">{{ $project->early_adopters_count }}</span>
-                    <span class="project-stat-label">Early Adopters</span>
-                </div>
-                <div class="project-stat">
                     <span class="project-stat-value">{{ $project->votes }}</span>
                     <span class="project-stat-label">Votes</span>
                 </div>
@@ -116,7 +112,11 @@
                     @auth
                         @if($userFollow)
                             <div class="already-following">
-                                ✓ Following as <strong>{{ str_replace('_', ' ', $userFollow) }}</strong>
+                                @if($userFollow === 'tester')
+                                    ✓ You're a <strong>tester</strong> of this project
+                                @else
+                                    ✓ <strong>Following</strong> — you'll get email updates
+                                @endif
                             </div>
                             <form method="POST" action="{{ route('projects.unfollow', $project) }}">
                                 @csrf @method('DELETE')
@@ -125,31 +125,26 @@
                                 </button>
                             </form>
                         @else
-                            <h3 style="margin-bottom:16px;">Join this project</h3>
+                            <h3 style="margin-bottom:8px;">Join this project</h3>
 
-                            <form method="POST" action="{{ route('projects.follow', $project) }}">
+                            <form method="POST" action="{{ route('projects.follow', $project) }}" style="margin-bottom:10px;">
                                 @csrf
                                 <input type="hidden" name="role" value="follower">
                                 <button type="submit" class="action-btn action-btn--secondary">
-                                    Follow project
+                                    ✉ Follow & get updates
                                 </button>
                             </form>
 
+                            @if($project->link)
                             <form method="POST" action="{{ route('projects.follow', $project) }}">
                                 @csrf
                                 <input type="hidden" name="role" value="tester">
                                 <button type="submit" class="action-btn action-btn--primary">
-                                    Become a Tester
+                                    🧪 Become a Tester
                                 </button>
                             </form>
-
-                            <form method="POST" action="{{ route('projects.follow', $project) }}">
-                                @csrf
-                                <input type="hidden" name="role" value="early_adopter">
-                                <button type="submit" class="action-btn action-btn--tertiary">
-                                    Early Adopter
-                                </button>
-                            </form>
+                            <p style="font-size:11px; color:var(--text-muted); margin-top:6px; text-align:center;">You'll be redirected to the platform to register</p>
+                            @endif
                         @endif
 
                         <form method="POST" action="{{ route('projects.vote', $project) }}" style="margin-top:12px;">

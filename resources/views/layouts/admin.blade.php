@@ -27,7 +27,7 @@
                     <a href="{{ route('profile.edit') }}" class="{{ request()->routeIs('profile.*') ? 'active' : '' }}">
                         My Profile
                     </a>
-                    <a href="{{ route('home') }}" target="_blank">
+                    <a href="{{ route('home') }}">
                         View site →
                     </a>
                 </nav>
@@ -47,6 +47,9 @@
                 @endif
                 @if(session('error'))
                     <div class="admin-alert admin-alert--error">{{ session('error') }}</div>
+                @endif
+                @if(session('info'))
+                    <div class="admin-alert admin-alert--info">{{ session('info') }}</div>
                 @endif
 
                 @yield('content')

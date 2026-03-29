@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Project extends Model
 {
@@ -56,7 +57,7 @@ class Project extends Model
     public function hasVotedBy(?User $user): bool
     {
         if (!$user) return false;
-        return \DB::table('project_votes')
+        return DB::table('project_votes')
             ->where('user_id', $user->id)
             ->where('project_id', $this->id)
             ->exists();
@@ -70,16 +71,11 @@ class Project extends Model
 
     public function getFollowersCountAttribute(): int
     {
-        return $this->followers()->count();
+        return $this->followers()->where('role', 'follower')->count();
     }
 
     public function getTestersCountAttribute(): int
     {
         return $this->followers()->where('role', 'tester')->count();
-    }
-
-    public function getEarlyAdoptersCountAttribute(): int
-    {
-        return $this->followers()->where('role', 'early_adopter')->count();
     }
 }
