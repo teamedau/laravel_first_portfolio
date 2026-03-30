@@ -88,7 +88,7 @@
                             </div>
 
                             <div class="project-card-meta">
-                                <span class="status-badge status-{{ $project->status }}">{{ $project->status }}</span>
+                                <span class="status-badge status-{{ $project->status->value }}">{{ $project->status->value }}</span>
                                 @if($project->votes > 0)
                                     <span class="project-card-votes">▲ {{ $project->votes }}</span>
                                 @endif

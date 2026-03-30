@@ -89,7 +89,7 @@
                             <span class="admin-table-sub">{{ $project->tagline }}</span>
                         @endif
                     </td>
-                    <td><span class="status-badge status-{{ $project->status }}">{{ $project->status }}</span></td>
+                    <td><span class="status-badge status-{{ $project->status->value }}">{{ $project->status->value }}</span></td>
                     <td>{{ $project->progress }}%</td>
                     <td>{{ $project->votes }}</td>
                     <td>{{ $project->featured ? '★' : '—' }}</td>

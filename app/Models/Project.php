@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ProjectStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -26,6 +27,7 @@ class Project extends Model
     ];
 
     protected $casts = [
+        'status'      => ProjectStatus::class,
         'launch_date' => 'date',
         'featured'    => 'boolean',
         'votes'       => 'integer',

@@ -358,3 +358,7 @@ All updates to this document are logged here with date and description.
 | 2026-03-29 | Removed API layer: deleted Api\ProjectController, Api/ folder, ProjectApiTest; cleared routes/api.php |
 | 2026-03-30 | Added hero-image texture to about page hero section using CSS ::before pseudo-element at 40% opacity |
 | 2026-03-30 | Added collaborators feature: ProjectCollaborator model, migration, admin UI to add/remove collaborators per project, collaborator count on project cards, collaborator section on project show page |
+| 2026-03-30 | Added collaborators column to admin projects index table; added withCount to Admin\ProjectController@index |
+| 2026-03-30 | Fixed admin layout width bug: removed grid from .admin-layout (double-offset with fixed sidebar was halving content width) |
+| 2026-03-30 | Fixed Form Request namespace (Illuminate\Http\Request → App\Http\Requests); fixed $request->validate() → $request->validated(); completed missing rules in ProjectStoreRequest and ProjectUpdateRequest (title, link, category, launch_date) |
+| 2026-03-30 | Implemented ProjectStatus enum (app/Enums/ProjectStatus.php) with model cast and Enum validation rule in both Form Requests. Updated all Blade views to use $project->status->value. Created ProjectFactory. Confirmed public ProjectController handles view rendering only (index + show). |

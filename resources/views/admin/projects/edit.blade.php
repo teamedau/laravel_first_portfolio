@@ -62,9 +62,9 @@
             <div class="form-group">
                 <label for="status">Status *</label>
                 <select id="status" name="status" required>
-                    <option value="concept" {{ old('status', $project->status) === 'concept' ? 'selected' : '' }}>Concept</option>
-                    <option value="mvp"     {{ old('status', $project->status) === 'mvp'     ? 'selected' : '' }}>MVP</option>
-                    <option value="live"    {{ old('status', $project->status) === 'live'    ? 'selected' : '' }}>Live</option>
+                    <option value="concept" {{ old('status', $project->status->value) === 'concept' ? 'selected' : '' }}>Concept</option>
+                    <option value="mvp"     {{ old('status', $project->status->value) === 'mvp'     ? 'selected' : '' }}>MVP</option>
+                    <option value="live"    {{ old('status', $project->status->value) === 'live'    ? 'selected' : '' }}>Live</option>
                 </select>
             </div>
 

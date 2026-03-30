@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\ProjectStatus;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class ProjectStoreRequest extends FormRequest
 {
@@ -28,7 +30,7 @@ class ProjectStoreRequest extends FormRequest
             'tech'        => 'nullable|string',
             'link'        => 'nullable|url',
             'category'    => 'nullable|string|max:100',
-            'status'      => 'required|in:concept,mvp,live',
+            'status'      => ['required', new Enum(ProjectStatus::class)],
             'progress'    => 'nullable|integer|min:0|max:100',
             'launch_date' => 'nullable|date',
             'image'       => 'nullable|image|max:2048',

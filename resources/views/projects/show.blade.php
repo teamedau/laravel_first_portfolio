@@ -37,7 +37,7 @@
             </div>
 
             <div style="display:flex; align-items:center; gap:16px;">
-                <span class="status-badge status-{{ $project->status }}">{{ $project->status }}</span>
+                <span class="status-badge status-{{ $project->status->value }}">{{ $project->status->value }}</span>
                 @if($project->launch_date)
                     <span style="font-size:13px; color:var(--text-muted);">
                         Estimated launch: {{ $project->launch_date->format('M Y') }}

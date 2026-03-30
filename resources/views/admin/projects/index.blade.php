@@ -31,7 +31,7 @@
                         @endif
                     </td>
                     <td>{{ $project->category ?? '—' }}</td>
-                    <td><span class="status-badge status-{{ $project->status }}">{{ $project->status }}</span></td>
+                    <td><span class="status-badge status-{{ $project->status->value }}">{{ $project->status->value }}</span></td>
                     <td>{{ $project->progress }}%</td>
                     <td>{{ $project->launch_date?->format('M Y') ?? '—' }}</td>
                     <td>{{ $project->votes }}</td>
