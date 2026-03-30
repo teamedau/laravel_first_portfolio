@@ -17,6 +17,7 @@
                     <th>Progress</th>
                     <th>Launch</th>
                     <th>Votes</th>
+                    <th>Collaborators</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -34,6 +35,7 @@
                     <td>{{ $project->progress }}%</td>
                     <td>{{ $project->launch_date?->format('M Y') ?? '—' }}</td>
                     <td>{{ $project->votes }}</td>
+                    <td>{{ $project->collaborators_count ?: '—' }}</td>
                     <td class="admin-table-actions">
                         <a href="{{ route('admin.projects.edit', $project) }}">Edit</a>
                         <a href="{{ route('projects.show', $project) }}" target="_blank">View</a>
@@ -44,7 +46,7 @@
                     </td>
                 </tr>
                 @empty
-                <tr><td colspan="7">No projects yet. <a href="{{ route('admin.projects.create') }}">Create your first one</a>.</td></tr>
+                <tr><td colspan="8">No projects yet. <a href="{{ route('admin.projects.create') }}">Create your first one</a>.</td></tr>
                 @endforelse
             </tbody>
         </table>

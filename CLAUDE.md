@@ -356,3 +356,5 @@ All updates to this document are logged here with date and description.
 | 2026-03-29 | Added security rules section, added structure.txt and sensitive files to .gitignore |
 | 2026-03-29 | Fixed test doc blocks (/** POST @test */ → /** @test */); replaced all hardcoded URL strings in tests with route() helper |
 | 2026-03-29 | Removed API layer: deleted Api\ProjectController, Api/ folder, ProjectApiTest; cleared routes/api.php |
+| 2026-03-30 | Added hero-image texture to about page hero section using CSS ::before pseudo-element at 40% opacity |
+| 2026-03-30 | Added collaborators feature: ProjectCollaborator model, migration, admin UI to add/remove collaborators per project, collaborator count on project cards, collaborator section on project show page |

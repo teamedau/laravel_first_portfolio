@@ -30,7 +30,7 @@ class ProjectController extends Controller
             default    => $query->latest(),
         };
 
-        $projects   = $query->paginate(12)->withQueryString();
+        $projects   = $query->withCount('collaborators')->paginate(12)->withQueryString();
         $categories = Project::whereNotNull('category')->distinct()->pluck('category');
 
         return view('projects.index', compact('projects', 'categories'));
@@ -38,7 +38,7 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
-        $project->load('updates', 'followers');
+        $project->load(['updates', 'followers', 'collaborators']);
         $userFollow = auth()->check()
             ? $project->followRoleFor(auth()->user())
             : null;

@@ -708,8 +708,6 @@ ADMIN PANEL
 }
 
 .admin-layout {
-    display: grid;
-    grid-template-columns: 240px 1fr;
     min-height: 100vh;
 }
 
@@ -1761,4 +1759,31 @@ ADMIN PANEL
     border-radius: 8px;
     padding: 10px 14px;
     margin-bottom: 20px;
+}
+
+/* =========================
+   TEXTURE
+========================= */
+
+.about-platform {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-platform::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/storage/hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 30;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.about-platform .container {
+    position: relative;
+    z-index: 1;
 }

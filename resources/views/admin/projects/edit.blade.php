@@ -87,11 +87,48 @@
             </div>
         </div>
 
+        <div class="admin-section">
+            <h2>Collaborators</h2>
+            <p class="admin-section-sub">Add people who contributed to this project.</p>
+
+            <div id="collaborators-list">
+                @foreach($project->collaborators as $collab)
+                <div class="collaborator-row" style="display:flex; gap:12px; margin-bottom:12px; align-items:center;">
+                    <input type="text" name="collaborator_names[]" value="{{ $collab->name }}" placeholder="Name" class="form-control" style="flex:1;">
+                    <input type="text" name="collaborator_roles[]" value="{{ $collab->role }}" placeholder="Role (e.g. UI Design)" class="form-control" style="flex:1;">
+                    <input type="url" name="collaborator_urls[]" value="{{ $collab->url }}" placeholder="https://github.com/..." class="form-control" style="flex:2;">
+                    <button type="button" onclick="this.closest('.collaborator-row').remove()" class="btn-danger-sm">Remove</button>
+                </div>
+                @endforeach
+            </div>
+
+            <button type="button" onclick="addCollaborator()" class="btn-secondary" style="margin-top:8px;">
+                + Add Collaborator
+            </button>
+        </div>
+
         <div class="admin-form-actions">
             <button type="submit" class="btn-primary">Save changes</button>
             <a href="{{ route('admin.projects.index') }}" class="btn-secondary">Cancel</a>
         </div>
     </form>
+
+@push('scripts')
+<script>
+function addCollaborator() {
+    const row = document.createElement('div');
+    row.className = 'collaborator-row';
+    row.style.cssText = 'display:flex; gap:12px; margin-bottom:12px; align-items:center;';
+    row.innerHTML = `
+        <input type="text" name="collaborator_names[]" placeholder="Name" class="form-control" style="flex:1;">
+        <input type="text" name="collaborator_roles[]" placeholder="Role (e.g. UI Design)" class="form-control" style="flex:1;">
+        <input type="url" name="collaborator_urls[]" placeholder="https://github.com/..." class="form-control" style="flex:2;">
+        <button type="button" onclick="this.closest('.collaborator-row').remove()" class="btn-danger-sm">Remove</button>
+    `;
+    document.getElementById('collaborators-list').appendChild(row);
+}
+</script>
+@endpush
 
     <!-- Testers -->
     <div class="admin-section">

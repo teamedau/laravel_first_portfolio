@@ -103,6 +103,28 @@
                         @endforeach
                     </div>
                 @endif
+
+                @if($project->collaborators->isNotEmpty())
+                <section class="updates-timeline" style="margin-top: 48px;">
+                    <h2 style="font-size:1.3rem; margin-bottom:24px;">Collaborators</h2>
+                    <div style="display:flex; flex-direction:column; gap:16px;">
+                        @foreach($project->collaborators as $collab)
+                        <div class="timeline-item">
+                            <div class="timeline-dot update"></div>
+                            <div>
+                                <strong style="color:var(--text-light); font-size:15px;">{{ $collab->name }}</strong>
+                                <span style="color:var(--text-muted); font-size:13px; margin-left:8px;">{{ $collab->role }}</span>
+                                @if($collab->url)
+                                <br>
+                                <a href="{{ $collab->url }}" target="_blank" rel="noopener noreferrer"
+                                   style="color:var(--accent); font-size:13px;">{{ $collab->url }}</a>
+                                @endif
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </section>
+                @endif
             </div>
 
             <!-- Sidebar: acciones -->

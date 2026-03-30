@@ -22,14 +22,16 @@ class ProjectUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'description' => 'nullable|string',
+            'title'       => 'required|string|max:255',
             'tagline'     => 'nullable|string|max:255',
+            'description' => 'nullable|string',
             'tech'        => 'nullable|string',
-            'status'      => 'nullable|string',
+            'link'        => 'nullable|url',
+            'category'    => 'nullable|string|max:100',
+            'status'      => 'required|in:concept,mvp,live',
             'progress'    => 'nullable|integer|min:0|max:100',
+            'launch_date' => 'nullable|date',
             'image'       => 'nullable|image|max:2048',
-            'github_url'  => 'nullable|url',
-            'live_url'    => 'nullable|url',
             'featured'    => 'nullable|boolean',
         ];
     }

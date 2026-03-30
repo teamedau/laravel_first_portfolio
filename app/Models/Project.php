@@ -42,6 +42,11 @@ class Project extends Model
         return $this->hasMany(ProjectUpdate::class)->latest();
     }
 
+    public function collaborators()
+    {
+        return $this->hasMany(ProjectCollaborator::class);
+    }
+
     public function isFollowedBy(?User $user): bool
     {
         if (!$user) return false;

@@ -95,6 +95,9 @@
                                 @if($project->followers_count > 0)
                                     <span style="font-size:11px; color:var(--text-muted);">{{ $project->followers_count }} followers</span>
                                 @endif
+                                @if($project->collaborators_count > 0)
+                                    <span class="project-card-votes">{{ $project->collaborators_count }} {{ Str::plural('collaborator', $project->collaborators_count) }}</span>
+                                @endif
                             </div>
 
                             <div class="progress-bar" style="--progress: {{ $project->progress }}%"></div>
