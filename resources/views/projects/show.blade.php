@@ -123,57 +123,13 @@
             <div class="project-action-sidebar">
                 <div class="project-action-card">
 
-                    @auth
-                        @if($userFollow)
-                            <div class="already-following">
-                                @if($userFollow === 'tester')
-                                    ✓ You're a <strong>tester</strong> of this project
-                                @else
-                                    ✓ <strong>Following</strong> — you'll get email updates
-                                @endif
-                            </div>
-                            <form method="POST" action="{{ route('projects.unfollow', $project) }}">
-                                @csrf @method('DELETE')
-                                <button type="submit" class="action-btn action-btn--secondary" style="margin-bottom:12px;">
-                                    Unfollow
-                                </button>
-                            </form>
-                        @else
-                            <h3 style="margin-bottom:8px;">Join this project</h3>
-
-                            <form method="POST" action="{{ route('projects.follow', $project) }}" style="margin-bottom:10px;">
-                                @csrf
-                                <input type="hidden" name="role" value="follower">
-                                <button type="submit" class="action-btn action-btn--secondary">
-                                    ✉ Follow & get updates
-                                </button>
-                            </form>
-
-                            @if($project->link)
-                            <form method="POST" action="{{ route('projects.follow', $project) }}">
-                                @csrf
-                                <input type="hidden" name="role" value="tester">
-                                <button type="submit" class="action-btn action-btn--primary">
-                                    🧪 Become a Tester
-                                </button>
-                            </form>
-                            <p style="font-size:11px; color:var(--text-muted); margin-top:6px; text-align:center;">You'll be redirected to the platform to register</p>
-                            @endif
-                        @endif
-
-                        <form method="POST" action="{{ route('projects.vote', $project) }}" style="margin-top:12px;">
-                            @csrf
-                            <button type="submit" class="vote-btn {{ $userVoted ? 'voted' : '' }}">
-                                ▲ {{ $userVoted ? 'Voted' : 'Upvote' }} · {{ $project->votes }}
-                            </button>
-                        </form>
-
-                    @else
-                        <div style="text-align:center; padding: 8px 0 4px;">
-                            <span style="font-family:var(--font-title); font-size:2rem; color:var(--text-light);">▲ {{ $project->votes }}</span>
-                            <p style="font-size:12px; color:var(--text-muted); margin-top:4px;">votes</p>
-                        </div>
-                    @endauth
+                    <form method="POST" action="{{ route('projects.vote', $project) }}">
+                        @csrf
+                        <button type="submit" class="action-btn action-btn--primary {{ $userVoted ? 'voted' : '' }}">
+                            <i class="fas fa-thumbs-up"></i>
+                            {{ $userVoted ? 'Voted' : 'Upvote' }} · {{ $project->votes }}
+                        </button>
+                    </form>
 
                     @if($project->link)
                         <hr style="border-color: rgba(255,255,255,0.1); margin: 16px 0;">
