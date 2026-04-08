@@ -131,12 +131,12 @@ HEADER
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 40px;
+    padding: 14px 40px;
     background: rgba(8, 12, 20, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
-    position: static;
+    position: sticky;
     top: 0;
     z-index: 100;
 }
@@ -1813,4 +1813,213 @@ ADMIN PANEL
 .about-platform .container {
     position: relative;
     z-index: 1;
+}
+
+/* =========================
+   PORTFOLIO REDESIGN
+========================= */
+
+/* --- Code-themed navbar brand --- */
+.nav-brand { flex-shrink: 0; }
+
+.brand-logo {
+    font-family: var(--font-code, 'Fira Code', monospace);
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    transition: opacity 0.2s;
+}
+.brand-logo:hover { opacity: 0.8; }
+
+.logo-bracket {
+    color: var(--accent);
+    font-size: 1.4rem;
+}
+
+.logo-text {
+    color: var(--text-light);
+    background: linear-gradient(90deg, var(--accent) 0%, var(--teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* --- Nav links with icons --- */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 200;
+    color: white;
+    letter-spacing: 0.3px;
+    padding: 6px 4px;
+    transition: color 0.18s;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--teal));
+    border-radius: 2px;
+    transition: width 0.2s;
+}
+
+.nav-link:hover,
+.nav-link--active {
+    color: var(--text-light);
+}
+
+.nav-link:hover::after,
+.nav-link--active::after {
+    width: 100%;
+}
+
+.nav-link i {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* --- Nav end (social + hamburger) --- */
+.nav-end {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* --- Hamburger button --- */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-light);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+}
+
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* --- Mobile nav --- */
+@media (max-width: 768px) {
+    .main-header { padding: 14px 20px; }
+    .nav-hamburger { display: flex; }
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(8, 12, 20, 0.98);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 20px 24px;
+    }
+    .nav.open { display: block; }
+    .nav-list {
+        flex-direction: column;
+        gap: 4px;
+    }
+    .nav-link { font-size: 16px; padding: 10px 4px; }
+    .nav-social-icon { display: none; }
+}
+
+/* --- Project card overlay (home page) --- */
+.project-image { position: relative; }
+
+.project-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(79, 70, 229, 0.82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s;
+    border-radius: 8px;
+}
+
+.project-card-overlay span {
+    color: #fff;
+    font-family: var(--font-title);
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.project-card:hover .project-card-overlay { opacity: 1; }
+
+.project-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(79,70,229,0.08) 0%, rgba(52,211,153,0.06) 100%);
+    color: var(--accent);
+    font-size: 2rem;
+}
+
+.project-card-category {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-solid);
+    font-family: var(--font-title);
+    margin-bottom: -4px;
+}
+
+/* --- Roles section (moved from hero to home) --- */
+.roles-section {
+    padding: 64px 0;
+}
+
+.roles-section .hero-roles {
+    border-top: none;
+    padding-top: 0;
+}
+
+/* --- Contact section (home) --- */
+.contact-email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-title);
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    color: var(--text-light);
+    background: rgba(129, 140, 248, 0.08);
+    border: 1px solid rgba(129, 140, 248, 0.22);
+    padding: 16px 32px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-email-link:hover {
+    background: rgba(129, 140, 248, 0.15);
+    border-color: rgba(129, 140, 248, 0.45);
+    box-shadow: 0 0 24px rgba(129, 140, 248, 0.18);
+    color: #fff;
 }

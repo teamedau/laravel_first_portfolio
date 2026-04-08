@@ -17,6 +17,14 @@ class HomeController extends Controller
             $featured = $topVoted;
         }
 
-        return view('home', compact('featured', 'topVoted', 'newest'));
+        // Unified collection for the portfolio grid: featured first, then newest, deduped, up to 8
+        $allProjects = Project::withCount('collaborators')
+            ->orderByDesc('featured')
+            ->orderByDesc('votes')
+            ->latest()
+            ->take(8)
+            ->get();
+
+        return view('home', compact('featured', 'topVoted', 'newest', 'allProjects'));
     }
 }

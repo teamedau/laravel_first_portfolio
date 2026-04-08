@@ -9,6 +9,9 @@
 
         <!-- Fonts: loaded via @import in app.css (Bebas Neue + Nunito) -->
 
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
         <!-- GSAP (must load before app.js) -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 

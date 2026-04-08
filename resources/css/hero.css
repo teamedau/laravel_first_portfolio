@@ -240,3 +240,235 @@
         margin-bottom: 52px;
     }
 }
+
+/* =========================
+   SPLIT HERO LAYOUT
+========================= */
+.hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(129,140,248,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(129,140,248,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Left column */
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Greeting line */
+.hero-greeting {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+}
+
+.greeting-cursor {
+    color: var(--accent);
+    font-weight: 300;
+    animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* Code-style name */
+.hero-code-name {
+    font-family: var(--font-title);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 14px;
+    line-height: 1.1;
+}
+
+.code-kw  { color: #c084fc; }
+.code-var { color: var(--text-light); }
+.code-op  { color: var(--text-muted); }
+.code-str { color: var(--teal); }
+.code-punc{ color: var(--text-muted); }
+
+/* Job title / comment */
+.hero-job-title {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    letter-spacing: 0.3px;
+}
+
+.code-comment {
+    color: #6b7a99;
+    font-style: italic;
+}
+
+/* Social row */
+.hero-social-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.hero-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #c185f8;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.hero-social-btn img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.hero-social-btn--icon {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.hero-social-btn:hover {
+    border-color: var(--accent);
+    background: rgba(129,140,248,0.1);
+    transform: translateY(-2px);
+    color: var(--accent);
+}
+
+/* Right column */
+.hero-image-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image-glow {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(79,70,229,0.22) 0%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+}
+
+.hero-logo-frame {
+    width: 220px;
+    height: 220px;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(129,140,248,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-logo-img {
+    width: 160px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Floating tech badges */
+.hero-tech-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(14, 22, 40, 0.92);
+    border: 1px solid rgba(129,140,248,0.2);
+    border-radius: 12px;
+    padding: 10px 14px;
+    backdrop-filter: blur(10px);
+    font-family: var(--font-body);
+    z-index: 2;
+    white-space: nowrap;
+}
+
+.hero-tech-badge i {
+    font-size: 1.4rem;
+}
+
+.badge-1 {
+    top: -20px;
+    right: -30px;
+    animation: badgeFloat 3s ease-in-out infinite;
+}
+.badge-2 {
+    bottom: 20px;
+    left: -40px;
+    animation: badgeFloat 3s ease-in-out 1s infinite;
+}
+.badge-3 {
+    bottom: -20px;
+    right: -10px;
+    animation: badgeFloat 3s ease-in-out 2s infinite;
+}
+
+/* Laravel red, PHP indigo, CSS blue */
+.badge-1 i { color: #ef4444; }
+.badge-2 i { color: #818cf8; }
+.badge-3 i { color: #38bdf8; }
+
+.badge-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.badge-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+.badge-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+}
+
+/* Responsive — stack on mobile */
+@media (max-width: 860px) {
+    .hero-split {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+    }
+    .hero-social-row { justify-content: center; }
+    .hero-cta-row    { justify-content: center; }
+    .hero-image-wrapper { display: none; }
+}
+
+@media (max-width: 640px) {
+    .hero-code-name { font-size: 1.5rem; }
+}
