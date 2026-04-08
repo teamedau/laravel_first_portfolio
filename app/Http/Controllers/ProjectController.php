@@ -36,13 +36,18 @@ class ProjectController extends Controller
         return view('projects.index', compact('projects', 'categories'));
     }
 
-    public function show(Project $project)
+    public function show(Request $request, Project $project)
     {
         $project->load(['updates', 'followers', 'collaborators']);
         $userFollow = auth()->check()
             ? $project->followRoleFor(auth()->user())
             : null;
-        $userVoted = $project->hasVotedBy(auth()->user());
+
+        if (auth()->check()) {
+            $userVoted = $project->hasVotedBy(auth()->user());
+        } else {
+            $userVoted = in_array($project->id, $request->session()->get('voted_projects', []));
+        }
 
         return view('projects.show', compact('project', 'userFollow', 'userVoted'));
     }

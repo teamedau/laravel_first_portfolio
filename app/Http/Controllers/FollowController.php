@@ -36,30 +36,45 @@ class FollowController extends Controller
         return back()->with('success', 'You\'ve unfollowed this project.');
     }
 
-    public function vote(Project $project)
+    public function vote(Request $request, Project $project)
     {
-        $alreadyVoted = DB::table('project_votes')
-            ->where('user_id', auth()->id())
-            ->where('project_id', $project->id)
-            ->exists();
-
-        if ($alreadyVoted) {
-            // Quitar voto (toggle)
-            DB::table('project_votes')
+        if (auth()->check()) {
+            // Authenticated user: track in DB
+            $alreadyVoted = DB::table('project_votes')
                 ->where('user_id', auth()->id())
                 ->where('project_id', $project->id)
-                ->delete();
-            $project->decrement('votes');
-            return back()->with('info', 'Vote removed.');
+                ->exists();
+
+            if ($alreadyVoted) {
+                DB::table('project_votes')
+                    ->where('user_id', auth()->id())
+                    ->where('project_id', $project->id)
+                    ->delete();
+                $project->decrement('votes');
+                return back()->with('info', 'Vote removed.');
+            }
+
+            DB::table('project_votes')->insert([
+                'user_id'    => auth()->id(),
+                'project_id' => $project->id,
+                'created_at' => now(),
+            ]);
+        } else {
+            // Guest: track in session
+            $voted = $request->session()->get('voted_projects', []);
+
+            if (in_array($project->id, $voted)) {
+                $voted = array_values(array_filter($voted, fn($id) => $id !== $project->id));
+                $request->session()->put('voted_projects', $voted);
+                $project->decrement('votes');
+                return back()->with('info', 'Vote removed.');
+            }
+
+            $voted[] = $project->id;
+            $request->session()->put('voted_projects', $voted);
         }
 
-        DB::table('project_votes')->insert([
-            'user_id'    => auth()->id(),
-            'project_id' => $project->id,
-            'created_at' => now(),
-        ]);
         $project->increment('votes');
-
         return back()->with('success', 'Vote recorded!');
     }
 }
