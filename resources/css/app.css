@@ -300,6 +300,14 @@ PROJECTS GRID
     border-radius: 12px;
 }
 
+.project-card-view {
+    margin-left: auto;
+    font-family: var(--font-title);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+}
+
 /* =========================
 PROGRESS BAR (dinámica)
 ========================= */
@@ -379,6 +387,9 @@ FOOTER
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
 }
+
+.footer-social { grid-column: 2; }
+.footer-menu   { grid-column: 3; }
 
 .footer h4 {
     font-family: var(--font-title);
@@ -1180,6 +1191,22 @@ ADMIN PANEL
     transition: color 0.18s;
 }
 .nav-signout-btn:hover { color: var(--text-light); }
+
+.nav-social-icon {
+    display: flex;
+    align-items: center;
+}
+
+.nav-social-icon img {
+    height: 22px;
+    width: auto;
+    opacity: 0.7;
+    transition: opacity 0.18s;
+}
+
+.nav-social-icon:hover img {
+    opacity: 1;
+}
 
 /* =========================
    ADMIN PROFILE PAGE

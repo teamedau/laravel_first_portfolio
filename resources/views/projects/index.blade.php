@@ -88,16 +88,8 @@
                             </div>
 
                             <div class="project-card-meta">
-                                <span class="status-badge status-{{ $project->status->value }}">{{ $project->status->value }}</span>
-                                @if($project->votes > 0)
-                                    <span class="project-card-votes">▲ {{ $project->votes }}</span>
-                                @endif
-                                @if($project->followers_count > 0)
-                                    <span style="font-size:11px; color:var(--text-muted);">{{ $project->followers_count }} followers</span>
-                                @endif
-                                @if($project->collaborators_count > 0)
-                                    <span class="project-card-votes">{{ $project->collaborators_count }} {{ Str::plural('collaborator', $project->collaborators_count) }}</span>
-                                @endif
+                                <span class="project-card-votes">▲ {{ $project->votes }}</span>
+                                <span class="project-card-view">View Project →</span>
                             </div>
 
                             <div class="progress-bar" style="--progress: {{ $project->progress }}%"></div>

@@ -19,14 +19,6 @@
             <!-- Stats row -->
             <div class="project-stats-row">
                 <div class="project-stat">
-                    <span class="project-stat-value">{{ $project->followers_count }}</span>
-                    <span class="project-stat-label">Followers</span>
-                </div>
-                <div class="project-stat">
-                    <span class="project-stat-value">{{ $project->testers_count }}</span>
-                    <span class="project-stat-label">Testers</span>
-                </div>
-                <div class="project-stat">
                     <span class="project-stat-value">{{ $project->votes }}</span>
                     <span class="project-stat-label">Votes</span>
                 </div>
@@ -177,20 +169,8 @@
                         </form>
 
                     @else
-                        <div class="login-prompt">
-                            <p style="margin-bottom:12px; font-size:14px; color:var(--text-muted);">
-                                Sign up to follow this project, upvote, and get updates.
-                            </p>
-                            <a href="{{ route('register') }}" class="action-btn action-btn--primary" style="display:block; margin-bottom:10px;">
-                                Create a free account
-                            </a>
-                            <a href="{{ route('login') }}" class="action-btn action-btn--secondary" style="display:block;">
-                                Sign in
-                            </a>
-                        </div>
-
-                        <div style="margin-top:16px; text-align:center;">
-                            <span style="font-family:var(--font-title); font-size:1.3rem; color:var(--text-muted);">▲ {{ $project->votes }}</span>
+                        <div style="text-align:center; padding: 8px 0 4px;">
+                            <span style="font-family:var(--font-title); font-size:2rem; color:var(--text-light);">▲ {{ $project->votes }}</span>
                             <p style="font-size:12px; color:var(--text-muted); margin-top:4px;">votes</p>
                         </div>
                     @endauth

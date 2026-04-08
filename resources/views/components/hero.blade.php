@@ -36,14 +36,8 @@
 
             {{-- Creator --}}
             <div class="role-card role-card--creator" data-anim="role">
-                <div class="role-figure role-figure--amber">
-                    <svg class="role-person" viewBox="0 0 56 60" fill="none" aria-hidden="true">
-                        <circle cx="28" cy="15" r="11" fill="currentColor" opacity="0.9"/>
-                        <path d="M10 50c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="none"/>
-                        <path d="M28 3 L31 9 L28 7 L25 9 Z" fill="currentColor" opacity="0.6"/>
-                        <circle cx="33" cy="5" r="2" fill="currentColor" opacity="0.4"/>
-                        <circle cx="23" cy="4" r="1.5" fill="currentColor" opacity="0.3"/>
-                    </svg>
+                <div class="role-figure">
+                    <img src="/img/thieve.png" alt="Creator">
                 </div>
                 <div class="role-text">
                     <strong>Creator</strong>
@@ -53,13 +47,8 @@
 
             {{-- Tester --}}
             <div class="role-card role-card--tester" data-anim="role">
-                <div class="role-figure role-figure--violet">
-                    <svg class="role-person" viewBox="0 0 56 60" fill="none" aria-hidden="true">
-                        <circle cx="28" cy="15" r="11" fill="currentColor" opacity="0.9"/>
-                        <path d="M10 50c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="none"/>
-                        <circle cx="38" cy="46" r="6" stroke="currentColor" stroke-width="2.5" fill="none" opacity="0.7"/>
-                        <path d="M43 51 L49 57" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
-                    </svg>
+                <div class="role-figure">
+                    <img src="/img/zombie.png" alt="Tester">
                 </div>
                 <div class="role-text">
                     <strong>Tester</strong>
@@ -69,13 +58,8 @@
 
             {{-- Early Adopter --}}
             <div class="role-card role-card--adopter" data-anim="role">
-                <div class="role-figure role-figure--teal">
-                    <svg class="role-person" viewBox="0 0 56 60" fill="none" aria-hidden="true">
-                        <circle cx="28" cy="15" r="11" fill="currentColor" opacity="0.9"/>
-                        <path d="M10 50c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="none"/>
-                        <path d="M35 38 L40 28 L45 38" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.7"/>
-                        <path d="M40 28 L40 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-                    </svg>
+                <div class="role-figure">
+                    <img src="/img/hero.png" alt="Early Adopter">
                 </div>
                 <div class="role-text">
                     <strong>Early Adopter</strong>

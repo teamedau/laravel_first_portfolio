@@ -43,10 +43,8 @@
                         </div>
 
                         <div class="project-card-meta">
-                            <span class="status-badge status-{{ $project->status->value }}">{{ $project->status->value }}</span>
-                            @if($project->votes > 0)
-                                <span class="project-card-votes">▲ {{ $project->votes }}</span>
-                            @endif
+                            <span class="project-card-votes">▲ {{ $project->votes }}</span>
+                            <span class="project-card-view">View Project →</span>
                         </div>
 
                         <div class="progress-bar" style="--progress: {{ $project->progress }}%"></div>
@@ -84,9 +82,8 @@
                         @endif
 
                         <div class="project-card-meta">
-                            <span class="status-badge status-{{ $project->status->value }}">{{ $project->status->value }}</span>
                             <span class="project-card-votes">▲ {{ $project->votes }}</span>
-                            <span style="font-size:12px; color:var(--text-muted);">{{ $project->followers_count }} followers</span>
+                            <span class="project-card-view">View Project →</span>
                         </div>
 
                         <div class="progress-bar" style="--progress: {{ $project->progress }}%"></div>
@@ -135,10 +132,8 @@
                         </div>
 
                         <div class="project-card-meta">
-                            <span class="status-badge status-{{ $project->status->value }}">{{ $project->status->value }}</span>
-                            @if($project->launch_date)
-                                <span style="font-size:11px; color:var(--text-muted);">{{ $project->launch_date->format('M Y') }}</span>
-                            @endif
+                            <span class="project-card-votes">▲ {{ $project->votes }}</span>
+                            <span class="project-card-view">View Project →</span>
                         </div>
 
                         <div class="progress-bar" style="--progress: {{ $project->progress }}%"></div>

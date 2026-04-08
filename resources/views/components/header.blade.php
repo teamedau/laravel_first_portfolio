@@ -22,6 +22,17 @@
                     </form>
                 </li>
             @endauth
+
+            <li>
+                <a href="https://www.linkedin.com/in/vivianacastrillonolave/" target="_blank" rel="noopener" class="nav-social-icon">
+                    <img src="/img/LinkedIn.png" alt="LinkedIn">
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/teamedau" target="_blank" rel="noopener" class="nav-social-icon">
+                    <img src="/img/GitHub.png" alt="GitHub">
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
