@@ -57,49 +57,52 @@
         {{-- Right: logo + floating tech badges --}}
         <div class="hero-image-wrapper" data-anim="role">
             <div class="hero-image-glow"></div>
-            <div class="hero-logo-frame">
-                <img src="/logo.svg" alt="Vica Projects" class="hero-logo-img">
-            </div>
 
-            {{-- Large badges --}}
-            <div class="hero-tech-badge badge-1">
-                <i class="fab fa-laravel"></i>
-                <div class="badge-info">
-                    <span class="badge-title">Laravel</span>
-                    <span class="badge-sub">PHP · Blade · Eloquent</span>
+            <div class="hero-visual">
+                <div class="hero-logo-frame">
+                    <img src="/logo.svg" alt="Vica Projects" class="hero-logo-img">
                 </div>
-            </div>
 
-            <div class="hero-tech-badge badge-2">
-                <i class="fab fa-php"></i>
-                <div class="badge-info">
-                    <span class="badge-title">PHP</span>
-                    <span class="badge-sub">Backend · OOP · APIs</span>
+                {{-- Large badges --}}
+                <div class="hero-tech-badge badge-1">
+                    <i class="fab fa-laravel"></i>
+                    <div class="badge-info">
+                        <span class="badge-title">Laravel</span>
+                        <span class="badge-sub">PHP · Blade · Eloquent</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="hero-tech-badge badge-3">
-                <i class="fab fa-react"></i>
-                <div class="badge-info">
-                    <span class="badge-title">React</span>
-                    <span class="badge-sub">Components · Hooks</span>
+                <div class="hero-tech-badge badge-2">
+                    <i class="fab fa-php"></i>
+                    <div class="badge-info">
+                        <span class="badge-title">PHP</span>
+                        <span class="badge-sub">Backend · OOP · APIs</span>
+                    </div>
                 </div>
-            </div>
 
-            {{-- Small badges --}}
-            <div class="hero-tech-badge hero-tech-badge--sm badge-4">
-                <i class="fab fa-html5"></i>
-                <span class="badge-title">HTML</span>
-            </div>
+                <div class="hero-tech-badge badge-3">
+                    <i class="fab fa-react"></i>
+                    <div class="badge-info">
+                        <span class="badge-title">React</span>
+                        <span class="badge-sub">Components · Hooks</span>
+                    </div>
+                </div>
 
-            <div class="hero-tech-badge hero-tech-badge--sm badge-5">
-                <i class="fab fa-css3-alt"></i>
-                <span class="badge-title">CSS</span>
-            </div>
+                {{-- Small badges --}}
+                <div class="hero-tech-badge hero-tech-badge--sm badge-4">
+                    <i class="fab fa-html5"></i>
+                    <span class="badge-title">HTML</span>
+                </div>
 
-            <div class="hero-tech-badge hero-tech-badge--sm badge-6">
-                <i class="fab fa-python"></i>
-                <span class="badge-title">Python</span>
+                <div class="hero-tech-badge hero-tech-badge--sm badge-5">
+                    <i class="fab fa-css3-alt"></i>
+                    <span class="badge-title">CSS</span>
+                </div>
+
+                <div class="hero-tech-badge hero-tech-badge--sm badge-6">
+                    <i class="fab fa-python"></i>
+                    <span class="badge-title">Python</span>
+                </div>
             </div>
         </div>
 

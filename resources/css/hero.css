@@ -365,6 +365,16 @@
     justify-content: center;
 }
 
+/* Fixed-size anchor so badge positions are predictable */
+.hero-visual {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .hero-image-glow {
     position: absolute;
     width: 320px;
@@ -414,26 +424,20 @@
     font-size: 1.4rem;
 }
 
+/* Large badge positions (relative to .hero-visual 320×320) */
 .badge-1 {
-    top: -20px;
-    right: -30px;
+    top: -5px;
+    right: -20px;
     animation: badgeFloat 3s ease-in-out infinite;
 }
 .badge-2 {
-    bottom: 20px;
-    left: -40px;
+    bottom: -5px;
+    left: -20px;
     animation: badgeFloat 3s ease-in-out 1s infinite;
 }
 .badge-3 {
-    bottom: -20px;
-    right: -10px;
-    animation: badgeFloat 3s ease-in-out 2s infinite;
-}
-
-/* Badge 3: React cyan */
-.badge-3 {
-    top: -30px;
-    left: -40px;
+    top: -5px;
+    left: -20px;
     animation: badgeFloat 3s ease-in-out 2s infinite;
 }
 
@@ -457,22 +461,22 @@
     font-size: 11px;
 }
 
+/* Small badge positions */
 .badge-4 {
-    top: 50%;
-    right: -50px;
-    transform: translateY(-50%);
+    top: 130px;
+    right: -55px;
     animation: badgeFloat 3.5s ease-in-out 0.5s infinite;
 }
 
 .badge-5 {
-    top: 10px;
-    left: -20px;
+    top: 55px;
+    left: -50px;
     animation: badgeFloat 3.5s ease-in-out 1.5s infinite;
 }
 
 .badge-6 {
-    bottom: 10px;
-    left: -20px;
+    bottom: 55px;
+    left: -50px;
     animation: badgeFloat 3.5s ease-in-out 2.5s infinite;
 }
 
