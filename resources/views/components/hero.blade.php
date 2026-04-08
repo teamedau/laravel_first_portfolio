@@ -61,6 +61,7 @@
                 <img src="/logo.svg" alt="Vica Projects" class="hero-logo-img">
             </div>
 
+            {{-- Large badges --}}
             <div class="hero-tech-badge badge-1">
                 <i class="fab fa-laravel"></i>
                 <div class="badge-info">
@@ -78,11 +79,27 @@
             </div>
 
             <div class="hero-tech-badge badge-3">
-                <i class="fab fa-css3-alt"></i>
+                <i class="fab fa-react"></i>
                 <div class="badge-info">
-                    <span class="badge-title">Tailwind + Alpine</span>
-                    <span class="badge-sub">CSS · JS · Animations</span>
+                    <span class="badge-title">React</span>
+                    <span class="badge-sub">Components · Hooks</span>
                 </div>
+            </div>
+
+            {{-- Small badges --}}
+            <div class="hero-tech-badge hero-tech-badge--sm badge-4">
+                <i class="fab fa-html5"></i>
+                <span class="badge-title">HTML</span>
+            </div>
+
+            <div class="hero-tech-badge hero-tech-badge--sm badge-5">
+                <i class="fab fa-css3-alt"></i>
+                <span class="badge-title">CSS</span>
+            </div>
+
+            <div class="hero-tech-badge hero-tech-badge--sm badge-6">
+                <i class="fab fa-python"></i>
+                <span class="badge-title">Python</span>
             </div>
         </div>
 

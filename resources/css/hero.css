@@ -430,10 +430,56 @@
     animation: badgeFloat 3s ease-in-out 2s infinite;
 }
 
-/* Laravel red, PHP indigo, CSS blue */
+/* Badge 3: React cyan */
+.badge-3 {
+    top: -30px;
+    left: -40px;
+    animation: badgeFloat 3s ease-in-out 2s infinite;
+}
+
+/* Colors: Laravel red, PHP indigo, React cyan */
 .badge-1 i { color: #ef4444; }
 .badge-2 i { color: #818cf8; }
-.badge-3 i { color: #38bdf8; }
+.badge-3 i { color: #61dafb; }
+
+/* Small badges */
+.hero-tech-badge--sm {
+    padding: 7px 12px;
+    gap: 7px;
+    border-radius: 10px;
+}
+
+.hero-tech-badge--sm i {
+    font-size: 1rem;
+}
+
+.hero-tech-badge--sm .badge-title {
+    font-size: 11px;
+}
+
+.badge-4 {
+    top: 50%;
+    right: -50px;
+    transform: translateY(-50%);
+    animation: badgeFloat 3.5s ease-in-out 0.5s infinite;
+}
+
+.badge-5 {
+    top: 10px;
+    left: -20px;
+    animation: badgeFloat 3.5s ease-in-out 1.5s infinite;
+}
+
+.badge-6 {
+    bottom: 10px;
+    left: -20px;
+    animation: badgeFloat 3.5s ease-in-out 2.5s infinite;
+}
+
+/* HTML orange, CSS blue, Python yellow */
+.badge-4 i { color: #e34f26; }
+.badge-5 i { color: #264de4; }
+.badge-6 i { color: #f7c948; }
 
 .badge-info {
     display: flex;
