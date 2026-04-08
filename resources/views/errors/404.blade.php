@@ -121,6 +121,41 @@ body { overflow: hidden; }
     0%   { transform: translate3d(0, 120%, 0); }
     100% { transform: translate3d(0, 0, 0); }
 }
+
+@media (max-width: 767px) {
+    .not-found {
+        margin: 0;
+        height: 100vh;
+    }
+
+    .not-found .wave-lost {
+        font-size: 7rem;
+        left: 50%;
+        top: 12%;
+        transform: translateX(-50%);
+    }
+
+    .not-found .wave-message {
+        font-size: 1.4rem;
+        left: 50%;
+        bottom: 80px;
+        padding-right: 0;
+        transform: translateX(-50%);
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .not-found .boat {
+        width: 80px;
+        right: 5%;
+    }
+
+    .not-found .wave-island {
+        width: 90px;
+        left: 8%;
+        top: 100px;
+    }
+}
 </style>
 @endpush
 
