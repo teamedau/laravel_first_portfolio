@@ -22,7 +22,6 @@ class Project extends Model
         'progress',
         'category',
         'launch_date',
-        'votes',
         'featured',
     ];
 

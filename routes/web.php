@@ -23,7 +23,7 @@ Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('pro
 Route::get('/about', function () { return view('about'); })->name('about');
 
 // Vote is public (session-based for guests)
-Route::post('/projects/{project}/vote', [FollowController::class, 'vote'])->name('projects.vote');
+Route::post('/projects/{project}/vote', [FollowController::class, 'vote'])->name('projects.vote')->middleware('throttle:10,1');
 
 // Routes that require login
 Route::middleware(['auth'])->group(function () {
