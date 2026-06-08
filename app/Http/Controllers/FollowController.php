@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\ProjectFollower;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -34,6 +35,16 @@ class FollowController extends Controller
             ->delete();
 
         return back()->with('success', 'You\'ve unfollowed this project.');
+    }
+
+    public function unsubscribe(Project $project, User $user)
+    {
+        ProjectFollower::where('user_id', $user->id)
+            ->where('project_id', $project->id)
+            ->delete();
+
+        return redirect()->route('home')
+            ->with('success', 'You have been unsubscribed from ' . $project->title . '.');
     }
 
     public function vote(Request $request, Project $project)

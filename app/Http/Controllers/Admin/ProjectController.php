@@ -36,9 +36,7 @@ class ProjectController extends Controller
         $names = $request->input('collaborator_names', []);
         $roles = $request->input('collaborator_roles', []);
         $urls  = $request->input('collaborator_urls', []);
-        $request->validate([
-            'collaborator_urls.*' => 'nullable|url',
-        ]);
+
         foreach ($names as $i => $name) {
             if (!empty($name) && !empty($roles[$i])) {
                 $project->collaborators()->create([
@@ -83,9 +81,7 @@ class ProjectController extends Controller
         $names = $request->input('collaborator_names', []);
         $roles = $request->input('collaborator_roles', []);
         $urls  = $request->input('collaborator_urls', []);
-        $request->validate([
-            'collaborator_urls.*' => 'nullable|url',
-        ]);
+
         foreach ($names as $i => $name) {
             if (!empty($name) && !empty($roles[$i])) {
                 $project->collaborators()->create([

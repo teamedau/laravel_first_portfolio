@@ -10,16 +10,24 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\URL;
 
 class ProjectUpdateMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public string $unsubscribeUrl;
+
     public function __construct(
         public Project $project,
         public ProjectUpdate $update,
         public User $recipient,
-    ) {}
+    ) {
+        $this->unsubscribeUrl = URL::signedRoute('projects.unsubscribe', [
+            'project' => $project->id,
+            'user'    => $recipient->id,
+        ]);
+    }
 
     public function envelope(): Envelope
     {

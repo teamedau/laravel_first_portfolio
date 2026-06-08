@@ -31,7 +31,7 @@
         </div>
         <div class="footer">
             <p>You're receiving this because you follow <strong>{{ $project->title }}</strong> on Vica Projects.</p>
-            <p>Hi {{ $recipient->name }} · <a href="{{ route('projects.show', $project) }}">Unfollow this project</a></p>
+            <p>Hi {{ $recipient->name }} · <a href="{{ $unsubscribeUrl }}">Unsubscribe from this project</a></p>
         </div>
     </div>
 </body>

@@ -13,7 +13,7 @@ class ProjectStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->check() && auth()->user()->is_admin;
     }
 
     /**
@@ -33,8 +33,9 @@ class ProjectStoreRequest extends FormRequest
             'status'      => ['required', new Enum(ProjectStatus::class)],
             'progress'    => 'nullable|integer|min:0|max:100',
             'launch_date' => 'nullable|date',
-            'image'       => 'nullable|image|max:2048',
-            'featured'    => 'nullable|boolean',
+            'image'                  => 'nullable|image|max:2048',
+            'featured'               => 'nullable|boolean',
+            'collaborator_urls.*'    => 'nullable|url',
         ];
     }
 }

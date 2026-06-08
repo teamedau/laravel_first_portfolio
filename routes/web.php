@@ -25,6 +25,9 @@ Route::get('/about', function () { return view('about'); })->name('about');
 // Vote is public (session-based for guests)
 Route::post('/projects/{project}/vote', [FollowController::class, 'vote'])->name('projects.vote')->middleware('throttle:10,1');
 
+// Email unsubscribe — signed URL, no login required
+Route::get('/projects/{project}/unsubscribe/{user}', [FollowController::class, 'unsubscribe'])->name('projects.unsubscribe')->middleware('signed');
+
 // Routes that require login
 Route::middleware(['auth'])->group(function () {
     Route::post('/projects/{project}/follow', [FollowController::class, 'store'])->name('projects.follow');
